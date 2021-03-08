@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --dark: #000;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body,
+input,
+textarea,
+button {
+  font: 400 1rem 'Open Sans', sans-serif;
+}
