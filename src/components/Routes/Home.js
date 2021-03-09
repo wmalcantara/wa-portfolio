@@ -1,10 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import background from '../../assets/background.jpg';
+import { TweenMax, Power3 } from 'gsap';
 
 const Home = () => {
+  let btnAbout = useRef(null);
+  let btnGithub = useRef(null);
+  let btnLinkedin = useRef(null);
+  let bgPhoto = useRef(null);
+
+  //GSAP
+  useEffect(() => {
+    TweenMax.fromTo(
+      bgPhoto,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 2.3, opacity: 1, ease: Power3.easeIn },
+    );
+
+    TweenMax.fromTo(
+      btnAbout,
+      0.7,
+      { x: -50, opacity: 0 },
+      { x: 0, delay: 2.6, opacity: 1, ease: Power3.easeIn },
+    );
+
+    TweenMax.fromTo(
+      btnGithub,
+      0.7,
+      { x: -50, opacity: 0 },
+      { x: 0, delay: 2.9, opacity: 1, ease: Power3.easeIn },
+    );
+
+    TweenMax.fromTo(
+      btnLinkedin,
+      0.7,
+      { x: -50, opacity: 0 },
+      { x: 0, delay: 3.2, opacity: 1, ease: Power3.easeIn },
+    );
+  }, []);
+
+  //TypeWriter function
   useEffect(() => {
     const presentation = document.querySelector('.presentation');
 
@@ -42,15 +78,14 @@ const Home = () => {
   `;
 
   const TypeWriterBox = styled.div`
-    display: block;
-
-    text-align: left;
-    padding: 0.875rem;
-
-    max-width: 25%;
+    width: 25%;
 
     position: absolute;
     z-index: 1;
+
+    padding: 0.875rem;
+
+    //border: 2px solid blue;
 
     h1 {
       font-family: 'Prata', monospace;
@@ -74,11 +109,61 @@ const Home = () => {
         }
       }
     }
+
+    & > a {
+      opacity: 0;
+
+      display: block;
+      width: 100%;
+
+      border-radius: 3px;
+      color: var(--secondary);
+
+      margin-top: 1rem;
+      padding: 0.875rem;
+
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 700;
+
+      letter-spacing: 0.1rem;
+      font-size: 1rem;
+      font-family: 'Open Sans';
+      text-align: center;
+
+      transition: 0.7s ease;
+
+      background: transparent;
+      position: relative;
+      border: 2px solid var(--secondary);
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        z-index: -1;
+        width: 0%;
+        height: 103%;
+        transition: 0.7s ease;
+        background: var(--secondary);
+      }
+
+      &:hover {
+        color: var(--white);
+      }
+
+      &:hover::after {
+        width: 101%;
+      }
+    }
   `;
 
   const PersonalPhoto = styled.div`
     display: block;
 
+    //Radial-Gradient
     &::after {
       content: '';
       width: 100%;
@@ -95,17 +180,71 @@ const Home = () => {
     }
   `;
 
+  const SocialBox = styled.div`
+    margin-top: 1rem;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    img {
+      cursor: pointer;
+
+      transition: 0.2s ease;
+
+      &:hover {
+        transform: translate3d(0, -3px, 0);
+        opacity: 0.5;
+      }
+    }
+  `;
+
   return (
     <SectionContainer>
       <PresentationBox>
         <TypeWriterBox>
           <h1 className="presentation">Olá, me chamo Walter Alcantara.</h1>
-        </TypeWriterBox>
-        <PersonalPhoto>
-          <img src={background} alt="Walter's photo" />
-        </PersonalPhoto>
 
-        <Link to="/contato">Contato</Link>
+          <Link
+            to="/sobremim"
+            ref={(element) => {
+              btnAbout = element;
+            }}
+          >
+            Saiba mais
+          </Link>
+
+          <SocialBox>
+            <a
+              href="https://www.github.com/wmalcantara"
+              target="_blank"
+              ref={(element) => {
+                btnGithub = element;
+              }}
+            >
+              <img src="./assets/icons/github.svg" alt="GitHub" />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/walteralcantara"
+              target="_blank"
+              ref={(element) => {
+                btnLinkedin = element;
+              }}
+            >
+              <img src="./assets/icons/linkedin.svg" alt="LinkedIn" />
+            </a>
+          </SocialBox>
+        </TypeWriterBox>
+
+        <PersonalPhoto>
+          <img
+            src="./assets/background.jpg"
+            alt="Walter's photo"
+            ref={(element) => {
+              bgPhoto = element;
+            }}
+          />
+        </PersonalPhoto>
       </PresentationBox>
     </SectionContainer>
   );

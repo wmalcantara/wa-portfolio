@@ -7,6 +7,7 @@
 :root {
   --white: #fff;
   --dark: #000;
+  --secondary: tomato;
 }
 
 img,
@@ -20,4 +21,8 @@ input,
 textarea,
 button {
   font: 400 1rem 'Open Sans', sans-serif;
+}
+
+#li {
+  fill: #f02a2f;
 }

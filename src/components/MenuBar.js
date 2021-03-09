@@ -34,7 +34,7 @@ const NavLinks = styled.ul`
     transition: 0.2s ease;
 
     &:hover {
-      color: tomato;
+      color: var(--secondary);
     }
   }
 
