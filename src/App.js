@@ -1,5 +1,7 @@
-import MenuBar from './components/MenuBar.js';
 import './global.css';
+
+import MenuBar from './components/MenuBar.js';
+import Footer from './components/Footer.js';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -22,6 +24,8 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
           </Routes>
         </div>
+
+        <Footer />
       </Router>
     </>
   );
