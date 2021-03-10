@@ -8,7 +8,7 @@
   --white: #fff;
   --dark: #000;
   --secondary-dark: #1d1d1d;
-  --secondary: tomato;
+  --secondary: #682ae9;
 }
 
 img,
@@ -18,10 +18,8 @@ svg {
 }
 
 body,
-input,
-textarea,
 button {
-  font: 400 1rem 'Open Sans', sans-serif;
+  font: 400 1rem 'Roboto Mono', monospace;
 }
 
 body {

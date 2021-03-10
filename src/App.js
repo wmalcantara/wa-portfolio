@@ -24,8 +24,6 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
           </Routes>
         </div>
-
-        <Footer />
       </Router>
     </>
   );
