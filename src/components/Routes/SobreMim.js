@@ -1,67 +1,80 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import asojas from '../../';
+
 const SobreMim = () => {
-  const SectionContainer = styled.section`
-    color: var(--white);
-    width: 100%;
-    max-width: 960px;
+  const Container = styled.div`
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 3fr;
 
-    margin: 0 auto;
-    padding: 1rem;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    & > div + div {
-      margin-left: 1rem;
-      background: #f00;
-    }
+    height: 2000px;
   `;
 
-  const DivBoxText = styled.div`
-    flex: 0.4;
-
-    font-size: 1rem;
-    font-family: 'Prata';
-  `;
-
-  const DivBoxImg = styled.div`
-    object-fit: cover;
-    flex: 0.6;
-
-    img {
-      border-radius: 5px;
+  const SectionBox = styled.div`
+    //background-photo
+    &::before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 70%;
+      height: 100%;
+      max-width: 960px;
+      background-image: radial-gradient(
+          59.41% 59.41% at 25.44% 64.55%,
+          rgba(0, 0, 0, 0.25) 75.15%,
+          #000000 100%
+        ),
+        radial-gradient(
+          134.49% 277.33% at 20.74% 58.61%,
+          rgba(0, 0, 0, 0.15) 81.25%,
+          #000000 94.85%
+        ),
+        url(./assets/img/walter-background2.png);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-size: cover;
     }
+
+    color: #fff;
+    grid-column: 2;
+
+    position: absolute;
+
+    width: 200px;
+
+    top: 200px;
+    right: 0px;
   `;
 
   return (
-    <>
-      <SectionContainer>
-        <DivBoxText>
-          <p>
-            Meu nome é Walter Alcantara, tenho 23 anos e sou estudante de
-            Análise e Desenvolvimento de sistemas pelo Instituto Federal de São
-            Paulo, pelo Campus de Jacareí.
-          </p>
-          <br />
-          <p>
-            Entusiasta e um apaixonado pela tecnologia, amo poder aprender e
-            explorar como aplicar qualquer linguagem, lib e/ou framework.
-          </p>
-          <br />
-          <p>
-            Atualmente, estou estudando muito durante todos os dias um pouco de
-            React.js.
-          </p>
-        </DivBoxText>
-        <DivBoxImg>
-          <img src="./assets/img/code-1.jpg" alt="" />
-        </DivBoxImg>
-      </SectionContainer>
-      <SectionContainer></SectionContainer>
-    </>
+    <Container>
+      <SectionBox>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+        <h1>HELLO WORLD</h1>
+      </SectionBox>
+    </Container>
   );
 };
 

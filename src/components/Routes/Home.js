@@ -53,6 +53,9 @@ const Home = () => {
   const SectionContainer = styled.section`
     color: var(--white);
     width: 100%;
+    margin: 0 auto;
+
+    max-width: 960px;
 
     display: flex;
     justify-content: center;
@@ -73,10 +76,8 @@ const Home = () => {
 
     padding: 0.875rem;
 
-    //border: 2px solid blue;
-
     h1 {
-      font-family: 'Prata', monospace;
+      font-family: 700 'Roboto Mono';
       color: var(--white);
       font-size: 3rem;
 
@@ -111,12 +112,11 @@ const Home = () => {
       padding: 0.875rem;
 
       text-decoration: none;
-      text-transform: uppercase;
+      text-transform: capitalize;
       font-weight: 700;
 
       letter-spacing: 0.1rem;
       font-size: 1rem;
-      font-family: 'Open Sans';
       text-align: center;
 
       transition: 0.7s ease;
@@ -180,6 +180,7 @@ const Home = () => {
       height: 40px;
       cursor: pointer;
       transition: 0.7s ease;
+      fill: var(--secondary);
 
       & path {
         transition: 0.7s ease;
@@ -190,7 +191,7 @@ const Home = () => {
       }
 
       &:hover path {
-        fill: var(--secondary);
+        fill: var(--white);
       }
     } //svg
   `;
@@ -221,7 +222,7 @@ const Home = () => {
                 id="github"
                 x="0px"
                 y="0px"
-                fill="#fff"
+                fill=""
                 width="50px"
                 height="50px"
                 viewBox="0 0 438.549 438.549"
@@ -260,7 +261,7 @@ const Home = () => {
                 id="linkedin"
                 x="0px"
                 y="0px"
-                fill="#fff"
+                fill=""
                 width="50px"
                 height="50px"
                 viewBox="0 0 510 510"
@@ -279,7 +280,7 @@ const Home = () => {
 
         <PersonalPhoto>
           <img
-            src="./assets/background.jpg"
+            src="./assets/img/walter-background.jpg"
             alt="Walter's photo"
             ref={(element) => {
               bgPhoto = element;
