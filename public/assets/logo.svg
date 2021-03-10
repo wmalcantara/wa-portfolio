@@ -1,10 +1,8 @@
-<svg width="50" height="50" viewBox="0 0 168 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="50" height="50" viewBox="0 0 168 93" fill="none">
 <g id="Group 1">
 <path id="Vector 4" d="M19 0.5H0L23 92H45.5L62 22.5L79 92L87.5 67.5L71 0.5H53L35 74.5L19 0.5Z" fill="white"/>
 <path id="Vector 2" d="M112.5 1L80.5 92.5H101L107.5 71.5L124 15.5L141 71.5L147.5 92.5H168L136 1H112.5Z" fill="white"/>
 <g id="Vector 3">
 <path d="M133.5 55H114.5L110 71H138.5L133.5 55Z" fill="white"/>
 <path d="M133.5 55H114.5L110 71H138.5L133.5 55Z" stroke="white"/>
-</g>
-</g>
 </svg>
