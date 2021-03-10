@@ -1,0 +1,34 @@
+[
+  {
+    "img": "./assets/icons/techs/html.png",
+    "name": "HTML"
+  },
+  {
+    "img": "./assets/icons/techs/css.png",
+    "name": "CSS"
+  },
+  {
+    "img": "./assets/icons/techs/javascript.png",
+    "name": "JavaScript"
+  },
+  {
+    "img": "./assets/icons/techs/bootstrap.png",
+    "name": "Bootstrap"
+  },
+  {
+    "img": "./assets/icons/techs/git.png",
+    "name": "Git"
+  },
+  {
+    "img": "./assets/icons/techs/react.png",
+    "name": "React.js"
+  },
+  {
+    "img": "./assets/icons/techs/typescript.png",
+    "name": "TypeScript"
+  },
+  {
+    "img": "./assets/icons/techs/sass.png",
+    "name": "SASS"
+  }
+]

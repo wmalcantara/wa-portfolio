@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
+
+import techs from '../../techs.json';
+import tools from '../../tools.json';
 
 const Container = styled.div`
   background: var(--dark);
@@ -8,92 +11,6 @@ const Container = styled.div`
   grid-template-columns: 1fr 2fr;
 
   height: 2000px;
-`;
-
-const SectionBox = styled.section`
-  grid-column: 2;
-  width: 100%;
-
-  div {
-    padding: 4.5rem 0 0 0.875rem;
-    color: var(--white);
-    width: 100%;
-    position: relative;
-
-    h1 {
-      font-size: 4rem;
-    }
-    &:first-child {
-      ul {
-        margin-top: 1rem;
-        display: flex;
-        list-style-type: none;
-        align-items: center;
-
-        li:last-child {
-          display: flex;
-          align-items: center;
-
-          & > p {
-            margin-right: 0.3rem;
-          }
-
-          & button {
-            display: flex;
-            text-decoration: none;
-            border: none;
-            padding: 0.3rem;
-            background: var(--secondary);
-            color: var(--white);
-            border-radius: 3px;
-            cursor: pointer;
-
-            transition: 0.7s ease;
-
-            & span {
-              margin-left: 0.3rem;
-              fill: var(--white);
-              transition: 0.7s ease;
-            }
-
-            &:hover {
-              color: var(--secondary);
-              background: var(--white);
-
-              & span {
-                fill: var(--secondary);
-              }
-            }
-          }
-        }
-
-        li a svg {
-          width: 30px;
-          background: f00;
-          fill: var(--secondary);
-
-          & path {
-            transition: 0.7s ease;
-          }
-
-          &:hover {
-            transform: translate3d(0, -3px, 0);
-          }
-
-          &:hover path {
-            fill: var(--white);
-          }
-        }
-
-        li + li {
-          margin-left: 1rem;
-        }
-      }
-    }
-
-    &:nth-child(2) {
-    }
-  }
 `;
 
 const Background = styled.div`
@@ -122,15 +39,239 @@ const Background = styled.div`
   background-size: cover;
 `;
 
+const SectionBox = styled.section`
+  grid-column: 2;
+  width: 100%;
+`;
+
+const AboutMe = styled.div`
+  //type animation
+  &::after {
+    content: '|';
+    opacity: 1;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  } //type animation
+  padding: 4.5rem 0 0 0.875rem;
+  color: var(--white);
+  width: 100%;
+  position: relative;
+
+  h1 {
+    font-size: 4rem;
+
+    //type animation
+    &::after {
+      content: '|';
+      opacity: 1;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    } //type animation
+  }
+
+  ul {
+    margin-top: 1rem;
+    display: flex;
+    list-style-type: none;
+    align-items: center;
+
+    /* li -> button --> a --> span -> svg */
+
+    li:first-child,
+    li:nth-child(2) {
+      svg {
+        fill: var(--secondary);
+        width: 30px;
+        transition: 0.7s ease;
+
+        &:hover {
+          fill: var(--white);
+          transform: translate3d(0, -3px, 0);
+        }
+      }
+    }
+
+    li:last-child {
+      display: flex;
+      align-items: center;
+
+      button {
+        background: var(--secondary);
+        border: 0;
+        border-radius: 3px;
+        margin-left: 0.4rem;
+        transition: 0.3s ease;
+
+        &:hover {
+          background: var(--white);
+        }
+
+        svg {
+          fill: var(--white);
+          margin-left: 0.4rem;
+        }
+
+        a {
+          text-decoration: none;
+          color: var(--white);
+          display: flex;
+          padding: 0.4rem;
+
+          &:hover svg,
+          &:hover {
+            color: var(--secondary);
+            fill: var(--secondary);
+          }
+        }
+      }
+    }
+
+    li + li {
+      margin-left: 1rem;
+    }
+  }
+
+  &:nth-child(2) {
+    margin: 0px;
+    padding: 0.875rem;
+  }
+
+  span > p {
+    font-weight: 200;
+
+    margin-top: 0.875rem;
+  }
+`;
+
+const Techs = styled.div`
+  padding: 7.5rem 0 0 0.875rem;
+
+  position: relative;
+  z-index: 1;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      cursor: pointer;
+      margin: 0px;
+      padding: 0.4rem;
+      border-radius: 3px;
+      background: var(--secondary-dark);
+
+      transition: 0.3s ease;
+
+      &:hover {
+        transform: translate3d(0, -3px, 0);
+      }
+    }
+
+    div:first-child,
+    div + div {
+      margin-left: 0.4rem;
+      margin-top: 0.4rem;
+    }
+  }
+
+  p {
+    color: var(--white);
+  }
+`;
+
+const Tools = styled.div`
+  padding: 7.5rem 0 0 0.875rem;
+
+  position: relative;
+  z-index: 1;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: var(--white);
+  }
+
+  section {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+      cursor: pointer;
+      margin: 0px;
+      padding: 0.4rem;
+      border-radius: 3px;
+      background: var(--secondary-dark);
+
+      transition: 0.3s ease;
+
+      &:hover {
+        transform: translate3d(0, -3px, 0);
+      }
+    }
+
+    div:first-child,
+    div + div {
+      margin-left: 0.4rem;
+      margin-top: 0.4rem;
+    }
+  }
+
+  p {
+    color: var(--white);
+  }
+`;
+
 const SobreMim = () => {
+  useEffect(() => {
+    const typewriter = document.querySelector('.typewriter');
+
+    function typeWriter(element) {
+      if (element !== null) {
+        var textArr = element.innerHTML.split('');
+
+        element.innerHTML = '';
+        textArr.forEach((letter, i) => {
+          setTimeout(() => (element.innerHTML += letter), 75 * i);
+        });
+      }
+    }
+
+    typeWriter(typewriter);
+  }, []);
+
   return (
     <Container>
       <Background />
       <SectionBox>
-        <div>
-          <h1>sobre mim</h1>
+        <AboutMe>
+          <h1 className="typewriter">sobre mim.</h1>
+
           <ul>
-            {/* github icon */}
+            {/* 1st child */}
             <li>
               <a href="https://www.github.com/wmalcantara" target="_blank">
                 <svg
@@ -168,7 +309,7 @@ const SobreMim = () => {
               </a>
             </li>
 
-            {/* linkedin icon */}
+            {/* 2nd child */}
             <li>
               <a
                 href="https://www.linkedin.com/in/walteralcantara"
@@ -194,32 +335,83 @@ const SobreMim = () => {
               </a>
             </li>
 
+            {/* 3rd child */}
             <li>
               <p>Faça o download do meu</p>
-              <button>
-                currículo
-                <span>
-                  <svg
-                    width="20"
-                    vid="download"
-                    x="0px"
-                    y="0px"
-                    viewBox="0 0 512 512"
-                  >
-                    <path
-                      d="M472,313v139c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V313H0v139c0,33.084,26.916,60,60,60h392
-                    c33.084,0,60-26.916,60-60V313H472z"
-                    />
+              <button type="button">
+                <a href="./assets/Resume.pdf" download="Resume.pdf">
+                  currículo
+                  <span>
+                    <svg
+                      width="20"
+                      vid="download"
+                      x="0px"
+                      y="0px"
+                      viewBox="0 0 512 512"
+                      fill="#000"
+                    >
+                      <path
+                        d="M472,313v139c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V313H0v139c0,33.084,26.916,60,60,60h392
+                      c33.084,0,60-26.916,60-60V313H472z"
+                      />
 
-                    <polygon points="352,235.716 276,311.716 276,0 236,0 236,311.716 160,235.716 131.716,264 256,388.284 380.284,264 		" />
-                  </svg>
-                </span>
+                      <polygon points="352,235.716 276,311.716 276,0 236,0 236,311.716 160,235.716 131.716,264 256,388.284 380.284,264 		" />
+                    </svg>
+                  </span>
+                </a>
               </button>
             </li>
           </ul>
-        </div>
 
-        <div>KKKKKKKKKKKKKKKKKKkk</div>
+          <span>
+            <p style={{ color: 'var(--secondary)' }}>
+              Estudante em Análises e Desenvolvimento de Sistemas pelo Instituto
+              Federal de São Paulo, Campus de Jacareí.
+            </p>
+            <p>
+              Olá, meu nome é Walter Alcantara, tenho 23 anos, casado e se
+              considera como um entusiasta e um apaixonado por tecnologia. Amo
+              poder aprender uma nova tecnologia, explorar e descobrir como é
+              possível aplicar.
+            </p>
+          </span>
+        </AboutMe>
+
+        <Techs>
+          <h2>habilidades</h2>
+
+          <p>Algumas tecnologias que utilizo e estudo no momento.</p>
+
+          <section>
+            {techs.map((tech) => {
+              console.log(tech.name);
+
+              return (
+                <div key={tech.name}>
+                  <img src={tech.img} alt={tech.name} />
+                </div>
+              );
+            })}
+          </section>
+        </Techs>
+
+        <Tools>
+          <h2>ferramentas</h2>
+          <p>
+            Algumas ferramentas que utilizo pra auxiliar no desenvolvimento.
+          </p>
+          <section>
+            {tools.map((tool) => {
+              console.log(tool.name);
+
+              return (
+                <div key={tool.name}>
+                  <img src={tool.img} alt={tool.name} />
+                </div>
+              );
+            })}
+          </section>
+        </Tools>
       </SectionBox>
     </Container>
   );

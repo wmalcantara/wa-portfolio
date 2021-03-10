@@ -1,0 +1,22 @@
+[
+  {
+    "img": "./assets/icons/tools/adobexd.png",
+    "name": "HTML"
+  },
+  {
+    "img": "./assets/icons/tools/figma.png",
+    "name": "CSS"
+  },
+  {
+    "img": "./assets/icons/tools/linux.png",
+    "name": "CSS"
+  },
+  {
+    "img": "./assets/icons/tools/photoshop.png",
+    "name": "CSS"
+  },
+  {
+    "img": "./assets/icons/tools/terminal.png",
+    "name": "CSS"
+  }
+]
