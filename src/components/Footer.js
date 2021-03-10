@@ -3,17 +3,21 @@ import styled from 'styled-components';
 
 const Footer = () => {
   const FooterBar = styled.footer`
-    background: var(--secondary-dark);
+    background: var(--dark);
     color: var(--white);
     text-align: center;
     width: 100%;
-    height: 40vh;
-    padding: 0.5rem 2rem;
+
+    bottom: 10px;
+    position: fixed;
 
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 
     p {
-      margin-top: 3rem;
+      & > span {
+        font-size: 1.5rem;
+        color: var(--secondary);
+      }
     }
 
     a {
@@ -25,7 +29,7 @@ const Footer = () => {
   return (
     <FooterBar>
       <p>
-        Feito com ❤️ por{' '}
+        Feito com <span>❤️</span> por{' '}
         <a href="https://linkedin.com/in/walteralcantara" target="_blank">
           Walter Alcantara
         </a>
