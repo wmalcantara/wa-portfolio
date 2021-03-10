@@ -4,6 +4,145 @@ import styled from 'styled-components';
 import { TweenMax, Power3 } from 'gsap';
 import Footer from '../Footer';
 
+const Container = styled.div`
+  width: 100%;
+  max-width: 1366px;
+
+  margin: 0 auto;
+  padding-top: 3rem;
+
+  position: relative;
+`;
+
+const Background = styled.div`
+  display: block;
+
+  position: fixed;
+  height: 50%;
+  width: 100%;
+  max-width: 1366px;
+
+  z-index: -1;
+
+  background-image: linear-gradient(
+      274.46deg,
+      #000000 5.44%,
+      rgba(0, 0, 0, 0.05) 26.18%
+    ),
+    linear-gradient(96.68deg, #000000 28.16%, rgba(0, 0, 0, 0.05) 45.61%),
+    url(./assets/img/walter-background.png);
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+`;
+
+const Hello = styled.div`
+  width: 25%;
+  height: 100%;
+
+  padding: 0.875rem;
+  margin: 1rem;
+
+  //btnLearnMore
+  & > a {
+    opacity: 0; //start 0 before animation;
+
+    display: block;
+    width: 100%;
+
+    border-radius: 3px;
+    color: var(--secondary);
+
+    text-decoration: none;
+    text-transform: capitalize;
+    font-weight: 700;
+
+    text-align: center;
+    background: transparent;
+    border: 2px solid var(--secondary);
+
+    padding: 0.875rem;
+    margin-top: 1rem;
+
+    position: relative;
+    transition: 0.7s ease;
+
+    //animation on hover
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      z-index: -1;
+      width: 0%;
+      height: 103%;
+      transition: 0.7s ease;
+      background: var(--secondary);
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &:hover::after {
+      width: 101%;
+    } //animation on hover
+  } //btnLearnMore
+
+  //Typewriter
+  h1 {
+    font-family: 700 'Roboto Mono';
+    color: var(--white);
+    font-size: 3rem;
+
+    //type animation
+    &::after {
+      content: '|';
+      opacity: 1;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+    } //type animation
+  } //Typewriter
+`;
+
+const SocialBox = styled.div`
+  margin-top: 4.5rem;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  svg {
+    height: 40px;
+    cursor: pointer;
+    transition: 0.7s ease;
+    fill: var(--secondary);
+
+    & path {
+      transition: 0.7s ease;
+    }
+
+    &:hover {
+      transform: translate3d(0, -3px, 0);
+    }
+
+    &:hover path {
+      fill: var(--white);
+    }
+  } //svg
+`;
+
 const Home = () => {
   let btnLearnMore = useRef(null);
   let socialBox = useRef(null);
@@ -48,145 +187,6 @@ const Home = () => {
 
     typeWriter(typewriter);
   }, []);
-
-  const Container = styled.div`
-    width: 100%;
-    max-width: 1366px;
-
-    margin: 0 auto;
-    padding-top: 3rem;
-
-    position: relative;
-  `;
-
-  const Background = styled.div`
-    display: block;
-
-    position: fixed;
-    height: 50%;
-    width: 100%;
-    max-width: 1366px;
-
-    z-index: -1;
-
-    background-image: linear-gradient(
-        274.46deg,
-        #000000 5.44%,
-        rgba(0, 0, 0, 0.05) 26.18%
-      ),
-      linear-gradient(96.68deg, #000000 28.16%, rgba(0, 0, 0, 0.05) 45.61%),
-      url(./assets/img/walter-background.png);
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-  `;
-
-  const Hello = styled.div`
-    width: 25%;
-    height: 100%;
-
-    padding: 0.875rem;
-    margin: 1rem;
-
-    //btnLearnMore
-    & > a {
-      opacity: 0; //start 0 before animation;
-
-      display: block;
-      width: 100%;
-
-      border-radius: 3px;
-      color: var(--secondary);
-
-      text-decoration: none;
-      text-transform: capitalize;
-      font-weight: 700;
-
-      text-align: center;
-      background: transparent;
-      border: 2px solid var(--secondary);
-
-      padding: 0.875rem;
-      margin-top: 1rem;
-
-      position: relative;
-      transition: 0.7s ease;
-
-      //animation on hover
-      &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: -1px;
-        left: -1px;
-        z-index: -1;
-        width: 0%;
-        height: 103%;
-        transition: 0.7s ease;
-        background: var(--secondary);
-      }
-
-      &:hover {
-        color: var(--white);
-      }
-
-      &:hover::after {
-        width: 101%;
-      } //animation on hover
-    } //btnLearnMore
-
-    //Typewriter
-    h1 {
-      font-family: 700 'Roboto Mono';
-      color: var(--white);
-      font-size: 3rem;
-
-      //type animation
-      &::after {
-        content: '|';
-        opacity: 1;
-        animation: blink 1s infinite;
-      }
-
-      @keyframes blink {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0;
-        }
-      } //type animation
-    } //Typewriter
-  `;
-
-  const SocialBox = styled.div`
-    margin-top: 4.5rem;
-
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-
-    svg {
-      height: 40px;
-      cursor: pointer;
-      transition: 0.7s ease;
-      fill: var(--secondary);
-
-      & path {
-        transition: 0.7s ease;
-      }
-
-      &:hover {
-        transform: translate3d(0, -3px, 0);
-      }
-
-      &:hover path {
-        fill: var(--white);
-      }
-    } //svg
-  `;
 
   return (
     <>
