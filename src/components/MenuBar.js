@@ -97,9 +97,10 @@ const MenuBar = () => {
         </Link>
 
         <NavLinks>
-          <Link to="/contato">Contato</Link>
-          <Link to="/portfolio">Portfólio</Link>
           <Link to="/sobremim">Sobre mim</Link>
+
+          <Link to="/portfolio">Portfólio</Link>
+          <Link to="/contato">Contato</Link>
         </NavLinks>
       </NavBar>
     </HeaderBar>

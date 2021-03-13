@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { TweenMax, Power3 } from 'gsap';
+import { Link } from 'react-router-dom';
+
+import styled from 'styled-components';
 import Footer from '../Footer';
 
 const Container = styled.div`

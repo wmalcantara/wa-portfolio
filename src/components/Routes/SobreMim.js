@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { TweenMax, Power3 } from 'gsap';
 import styled from 'styled-components';
 
 import techs from '../../techs.json';
@@ -44,9 +45,14 @@ const SectionBox = styled.section`
   width: 100%;
 `;
 
-const AboutMe = styled.div`
+const TypeWriter = styled.div`
+  padding-top: 8rem;
+  position: relative;
+  color: var(--white);
+  font-size: 3.5rem;
+
   //type animation
-  &::after {
+  h1:after {
     content: '|';
     opacity: 1;
     animation: blink 1s infinite;
@@ -61,39 +67,19 @@ const AboutMe = styled.div`
       opacity: 0;
     }
   } //type animation
+`;
+
+const AboutMe = styled.div`
   padding: 4.5rem 0 0 0.875rem;
   color: var(--white);
   width: 100%;
   position: relative;
-
-  h1 {
-    font-size: 4rem;
-
-    //type animation
-    &::after {
-      content: '|';
-      opacity: 1;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-    } //type animation
-  }
 
   ul {
     margin-top: 1rem;
     display: flex;
     list-style-type: none;
     align-items: center;
-
-    /* li -> button --> a --> span -> svg */
 
     li:first-child,
     li:nth-child(2) {
@@ -246,6 +232,40 @@ const Tools = styled.div`
 `;
 
 const SobreMim = () => {
+  let bgPhoto = useRef(null);
+  let aboutMe = useRef(null);
+  let techsList = useRef(null);
+  let toolsList = useRef(null);
+
+  //GSAP
+  useEffect(() => {
+    TweenMax.fromTo(
+      bgPhoto,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 0.8, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      aboutMe,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 1, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      techsList,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 1.2, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      toolsList,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 1.4, opacity: 1, ease: Power3.easeIn },
+    );
+  }, []);
+
+  //Typewriter
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter');
 
@@ -265,11 +285,22 @@ const SobreMim = () => {
 
   return (
     <Container>
-      <Background />
-      <SectionBox>
-        <AboutMe>
-          <h1 className="typewriter">sobre mim.</h1>
+      <Background
+        ref={(element) => {
+          bgPhoto = element;
+        }}
+      />
 
+      <SectionBox>
+        <TypeWriter>
+          <h1 className="typewriter">sobre mim.</h1>
+        </TypeWriter>
+
+        <AboutMe
+          ref={(element) => {
+            aboutMe = element;
+          }}
+        >
           <ul>
             {/* 1st child */}
             <li>
@@ -363,7 +394,11 @@ const SobreMim = () => {
             </li>
           </ul>
 
-          <span>
+          <span
+            ref={(element) => {
+              aboutMe = element;
+            }}
+          >
             <p style={{ color: 'var(--secondary)' }}>
               Estudante em Análises e Desenvolvimento de Sistemas pelo Instituto
               Federal de São Paulo, Campus de Jacareí.
@@ -377,7 +412,11 @@ const SobreMim = () => {
           </span>
         </AboutMe>
 
-        <Techs>
+        <Techs
+          ref={(element) => {
+            techsList = element;
+          }}
+        >
           <h2>habilidades</h2>
 
           <p>Algumas tecnologias que utilizo e estudo no momento.</p>
@@ -395,7 +434,11 @@ const SobreMim = () => {
           </section>
         </Techs>
 
-        <Tools>
+        <Tools
+          ref={(element) => {
+            toolsList = element;
+          }}
+        >
           <h2>ferramentas</h2>
           <p>
             Algumas ferramentas que utilizo pra auxiliar no desenvolvimento.
