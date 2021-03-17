@@ -17,6 +17,10 @@ svg {
   max-width: 100%;
 }
 
+h1,
+a,
+p,
+span,
 body,
 button {
   font: 400 1rem 'Roboto Mono', monospace;

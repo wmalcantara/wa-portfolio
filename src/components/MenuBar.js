@@ -11,8 +11,8 @@ const HeaderBar = styled.nav`
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
-  position: fixed;
-  z-index: 100;
+  position: relative;
+  z-index: 999;
 `;
 
 const NavBar = styled.nav`

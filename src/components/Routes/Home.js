@@ -10,16 +10,17 @@ const Container = styled.div`
   max-width: 1366px;
 
   margin: 0 auto;
-  padding-top: 3rem;
 
   position: relative;
 `;
 
 const Background = styled.div`
+  top: 0;
+
   display: block;
 
   position: fixed;
-  height: 50%;
+  height: 70%;
   width: 100%;
   max-width: 1366px;
 
@@ -96,7 +97,8 @@ const Hello = styled.div`
   h1 {
     font-family: 700 'Roboto Mono';
     color: var(--white);
-    font-size: 3rem;
+    font-size: 4rem;
+    font-weight: 700;
 
     //type animation
     &::after {

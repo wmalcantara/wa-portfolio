@@ -11,7 +11,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
 
-  height: 2000px;
+  height: 1000px;
 `;
 
 const Background = styled.div`
@@ -49,9 +49,14 @@ const TypeWriter = styled.div`
   padding-top: 8rem;
   position: relative;
   color: var(--white);
-  font-size: 3.5rem;
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+  }
 
   //type animation
+
   h1:after {
     content: '|';
     opacity: 1;
