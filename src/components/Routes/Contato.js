@@ -1,5 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { TweenMax, Power3 } from 'gsap';
+
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 const Container = styled.div`
   background: var(--dark);
@@ -7,7 +10,6 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
 
-  height: 1000px;
   max-width: 70%;
 
   h1 {
@@ -31,6 +33,7 @@ const Background = styled.div`
   left: 0;
   width: 70%;
   height: 100%;
+  opacity: 0.3;
   max-width: 960px;
   background-image: radial-gradient(
       62.05% 60.79% at 27.64% 69.14%,
@@ -85,6 +88,10 @@ const ContactMe = styled.div`
     font-weight: 700;
     text-decoration: none;
   }
+
+  div:nth-child(2) {
+    margin-top: 1rem;
+  }
 `;
 
 const SocialBox = styled.div`
@@ -99,9 +106,38 @@ const SocialBox = styled.div`
   a + a {
     margin-left: 1rem;
   }
+
+  svg {
+    height: 40px;
+    cursor: pointer;
+    transition: 0.7s ease;
+    fill: var(--secondary);
+
+    & path {
+      transition: 0.7s ease;
+    }
+
+    &:hover {
+      transform: translate3d(0, -3px, 0);
+    }
+
+    &:hover path {
+      fill: var(--white);
+    }
+  } //svg
 `;
 
 const Contato = () => {
+  //GSAP
+  useEffect(() => {
+    TweenMax.fromTo(
+      contactMeBox,
+      0.7,
+      { x: -50, opacity: 0 },
+      { x: 0, delay: 0.7, opacity: 1, ease: Power3.easeIn },
+    );
+  }, []);
+
   //Typewriter
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter');
@@ -120,43 +156,55 @@ const Contato = () => {
     typeWriter(typewriter);
   }, []);
 
+  let contactMeBox = useRef(null);
+
   return (
-    <Container>
-      <Background />
+    <>
+      <Helmet>
+        <title>Walter Alcantara | Contato</title>
+      </Helmet>
+      <Container>
+        <Background />
 
-      <SectionBox>
-        <TypeWriter>
-          <h1 className="typewriter">contato.</h1>
-        </TypeWriter>
+        <SectionBox>
+          <TypeWriter>
+            <h1 className="typewriter">contato.</h1>
+          </TypeWriter>
 
-        <ContactMe>
-          <p>
-            Espero que tenha gostado do meu portfolio, se gostou das minhas
-            habilidades você pode entrar em contato comigo, ficarei feliz em
-            respondê-lo.
-          </p>
-
-          <a
-            href="mailto:waltermalcantara@gmail.com"
-            title="Envie-me um email"
-            style={{ color: 'var(--secondary)' }}
+          <ContactMe
+            ref={(element) => {
+              contactMeBox = element;
+            }}
           >
-            waltermalcantara@gmail.com
-          </a>
+            <p>
+              Espero que tenha gostado do meu portfolio, se gostou das minhas
+              habilidades você pode entrar em contato comigo, ficarei feliz em
+              respondê-lo.
+            </p>
 
-          <SocialBox>
-            <a href="https://www.github.com/wmalcantara" target="_blank">
-              <svg
-                id="github"
-                x="0px"
-                y="0px"
-                fill=""
-                width="50px"
-                height="50px"
-                viewBox="0 0 438.549 438.549"
+            <div>
+              <a
+                href="mailto:waltermalcantara@gmail.com"
+                title="Envie-me um email"
+                style={{ color: 'var(--secondary)' }}
               >
-                <path
-                  d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
+                waltermalcantara@gmail.com
+              </a>
+            </div>
+
+            <SocialBox>
+              <a href="https://www.github.com/wmalcantara" target="_blank">
+                <svg
+                  id="github"
+                  x="0px"
+                  y="0px"
+                  fill=""
+                  width="50px"
+                  height="50px"
+                  viewBox="0 0 438.549 438.549"
+                >
+                  <path
+                    d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
             c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
             c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996
             c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136
@@ -176,36 +224,37 @@ const Contato = () => {
             c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995
             c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906
             C438.536,184.851,428.728,148.168,409.132,114.573z"
-                />
-              </svg>
-            </a>
+                  />
+                </svg>
+              </a>
 
-            <a
-              href="https://www.linkedin.com/in/walteralcantara"
-              target="_blank"
-            >
-              <svg
-                id="linkedin"
-                x="0px"
-                y="0px"
-                fill=""
-                width="50px"
-                height="50px"
-                viewBox="0 0 510 510"
+              <a
+                href="https://www.linkedin.com/in/walteralcantara"
+                target="_blank"
               >
-                <path
-                  id="li"
-                  d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z
+                <svg
+                  id="linkedin"
+                  x="0px"
+                  y="0px"
+                  fill=""
+                  width="50px"
+                  height="50px"
+                  viewBox="0 0 510 510"
+                >
+                  <path
+                    id="li"
+                    d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z
                     M153,433.5H76.5V204H153V433.5z M114.75,160.65c-25.5,0-45.9-20.4-45.9-45.9s20.4-45.9,45.9-45.9s45.9,20.4,45.9,45.9
                     S140.25,160.65,114.75,160.65z M433.5,433.5H357V298.35c0-20.399-17.85-38.25-38.25-38.25s-38.25,17.851-38.25,38.25V433.5H204
                     V204h76.5v30.6c12.75-20.4,40.8-35.7,63.75-35.7c48.45,0,89.25,40.8,89.25,89.25V433.5z"
-                />
-              </svg>
-            </a>
-          </SocialBox>
-        </ContactMe>
-      </SectionBox>
-    </Container>
+                  />
+                </svg>
+              </a>
+            </SocialBox>
+          </ContactMe>
+        </SectionBox>
+      </Container>
+    </>
   );
 };
 

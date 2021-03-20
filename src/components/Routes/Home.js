@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { TweenMax, Power3 } from 'gsap';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 import styled from 'styled-components';
 import Footer from '../Footer';
@@ -193,6 +194,10 @@ const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Walter Alcantara | Inicio</title>
+      </Helmet>
+      ;
       <Container>
         <Background
           ref={(element) => {
@@ -279,7 +284,6 @@ const Home = () => {
           </SocialBox>
         </Hello>
       </Container>
-
       <Footer />
     </>
   );
