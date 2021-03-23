@@ -10,8 +10,7 @@ import Footer from '../Footer';
 const Container = styled.div`
   width: 100%;
   max-width: 1366px;
-
-  position: relative;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     display: flex;
@@ -20,7 +19,6 @@ const Container = styled.div`
 `;
 
 const Background = styled.div`
-  top: 0;
 
   display: block;
 
@@ -46,13 +44,9 @@ const Background = styled.div`
   @media (max-width: 768px) {
     top: auto;
 
-    display: block;
-
     position: relative;
     height: 250px;
     width: 100%;
-
-    z-index: -1;
 
     background-image: radial-gradient(
         94% 63% at 31% 66%,

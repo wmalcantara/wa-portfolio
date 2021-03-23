@@ -5,6 +5,7 @@ const Footer = () => {
   const Footer = styled.footer`
     background: var(--dark);
     color: var(--white);
+    
     text-align: center;
     width: 100%;
 

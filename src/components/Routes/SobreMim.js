@@ -7,12 +7,21 @@ import tools from '../../tools.json';
 import { Helmet } from 'react-helmet';
 
 const Container = styled.div`
-  background: var(--dark);
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: 1fr 2fr;
 
-  height: 1000px;
+  background: var(--dark);
+
+  @media (max-width: 768px){
+    display: flex;
+    flex-direction: column;
+
+    overflow-x: hidden;
+  }
 `;
 
 const Background = styled.div`
@@ -39,11 +48,36 @@ const Background = styled.div`
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: cover;
+
+  @media (max-width: 768px){
+    top: 50px;
+
+    position: relative;
+    
+    height: 40vh;
+    min-height: 200px;
+
+    width: 100%;
+    min-width: 450px;
+
+    background-image: linear-gradient(-366deg, #000000 20%, rgba(0, 0, 0, 0.05) 55%),
+    url(./assets/img/walter-background2.png);
+
+  }
 `;
 
 const SectionBox = styled.section`
   grid-column: 2;
   width: 100%;
+  padding: .625rem;
+
+  @media (max-width: 768px){
+    p, li {
+      font-size: .875rem;
+
+    }
+  }
+
 `;
 
 const TypeWriter = styled.div`
@@ -57,7 +91,6 @@ const TypeWriter = styled.div`
   }
 
   //type animation
-
   h1:after {
     content: '|';
     opacity: 1;
@@ -73,6 +106,14 @@ const TypeWriter = styled.div`
       opacity: 0;
     }
   } //type animation
+
+  @media (max-width: 768px){
+    padding: 2rem .875rem;
+
+    h1 {
+      font-size: 3rem;
+    }
+  }
 `;
 
 const AboutMe = styled.div`
@@ -99,6 +140,8 @@ const AboutMe = styled.div`
           transform: translate3d(0, -3px, 0);
         }
       }
+
+      
     }
 
     li:last-child {
@@ -133,12 +176,30 @@ const AboutMe = styled.div`
             fill: var(--secondary);
           }
         }
+
+        
+      }
+
+      @media (max-width: 768px){
+        p {
+          font-size: .875rem;
+        }
+
+        button {
+          margin-left: 0px;
+        }
+
+        svg {
+          display: none;
+        }            
       }
     }
 
     li + li {
       margin-left: 1rem;
     }
+
+    
   }
 
   &:nth-child(2) {
@@ -151,6 +212,7 @@ const AboutMe = styled.div`
 
     margin-top: 0.875rem;
   }
+  
 `;
 
 const Techs = styled.div`
@@ -243,33 +305,33 @@ const SobreMim = () => {
   let techsList = useRef(null);
   let toolsList = useRef(null);
 
-  //GSAP
-  useEffect(() => {
-    TweenMax.fromTo(
-      bgPhoto,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 0.8, opacity: 1, ease: Power3.easeIn },
-    );
-    TweenMax.fromTo(
-      aboutMe,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 1, opacity: 1, ease: Power3.easeIn },
-    );
-    TweenMax.fromTo(
-      techsList,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 1.2, opacity: 1, ease: Power3.easeIn },
-    );
-    TweenMax.fromTo(
-      toolsList,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 1.4, opacity: 1, ease: Power3.easeIn },
-    );
-  }, []);
+  // //GSAP
+  // useEffect(() => {
+  //   TweenMax.fromTo(
+  //     bgPhoto,
+  //     0.7,
+  //     { y: -50, opacity: 0 },
+  //     { y: 0, delay: 0.8, opacity: 1, ease: Power3.easeIn },
+  //   );
+  //   TweenMax.fromTo(
+  //     aboutMe,
+  //     0.7,
+  //     { y: -50, opacity: 0 },
+  //     { y: 0, delay: 1, opacity: 1, ease: Power3.easeIn },
+  //   );
+  //   TweenMax.fromTo(
+  //     techsList,
+  //     0.7,
+  //     { y: -50, opacity: 0 },
+  //     { y: 0, delay: 1.2, opacity: 1, ease: Power3.easeIn },
+  //   );
+  //   TweenMax.fromTo(
+  //     toolsList,
+  //     0.7,
+  //     { y: -50, opacity: 0 },
+  //     { y: 0, delay: 1.4, opacity: 1, ease: Power3.easeIn },
+  //   );
+  // }, []);
 
   //Typewriter
   useEffect(() => {
@@ -401,6 +463,8 @@ const SobreMim = () => {
                     </span>
                   </a>
                 </button>
+
+                
               </li>
             </ul>
 
@@ -466,6 +530,7 @@ const SobreMim = () => {
             </section>
           </Tools>
         </SectionBox>
+
       </Container>
     </>
   );
