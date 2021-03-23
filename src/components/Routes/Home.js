@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 
 import styled from 'styled-components';
+import '../../global.css';
 import Footer from '../Footer';
 
 const Container = styled.div`
   width: 100%;
   max-width: 1366px;
 
-  margin: 0 auto;
-
   position: relative;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
 const Background = styled.div`
@@ -38,6 +42,25 @@ const Background = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
+  @media (max-width: 768px) {
+    top: auto;
+
+    display: block;
+
+    position: relative;
+    height: 250px;
+    width: 100%;
+
+    z-index: -1;
+
+    background-image: radial-gradient(
+        94% 63% at 31% 66%,
+        rgba(0, 0, 0, 0) 52.7%,
+        #000000 100%
+      ),
+      url(./assets/img/walter-background.png);
+  }
 `;
 
 const Hello = styled.div`
@@ -45,7 +68,9 @@ const Hello = styled.div`
   height: 100%;
 
   padding: 0.875rem;
-  margin: 1rem;
+  margin-top: 2rem;
+
+  position: fixed;
 
   //btnLearnMore
   & > a {
@@ -118,6 +143,19 @@ const Hello = styled.div`
       }
     } //type animation
   } //Typewriter
+
+  @media (max-width: 768px) {
+    position: relative;
+    margin-top: 4rem;
+    width: 100%;
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    a {
+      justify-self: center;
+    }
+  }
 `;
 
 const SocialBox = styled.div`
@@ -197,7 +235,7 @@ const Home = () => {
       <Helmet>
         <title>Walter Alcantara | Inicio</title>
       </Helmet>
-      ;
+
       <Container>
         <Background
           ref={(element) => {

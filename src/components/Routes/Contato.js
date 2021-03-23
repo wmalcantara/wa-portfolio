@@ -4,6 +4,8 @@ import { TweenMax, Power3 } from 'gsap';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
+
+
 const Container = styled.div`
   background: var(--dark);
 
@@ -148,7 +150,7 @@ const Contato = () => {
 
         element.innerHTML = '';
         textArr.forEach((letter, i) => {
-          setTimeout(() => (element.innerHTML += letter), 75 * i);
+          setTimeout(() => (element.innerHTML += letter), 100 * i);
         });
       }
     }
