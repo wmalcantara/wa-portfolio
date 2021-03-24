@@ -1,22 +1,26 @@
 [
   {
     "img": "./assets/icons/tools/adobexd.png",
-    "name": "HTML"
+    "name": "Adobe XD"
   },
   {
     "img": "./assets/icons/tools/figma.png",
-    "name": "CSS"
+    "name": "Figma"
   },
   {
     "img": "./assets/icons/tools/linux.png",
-    "name": "CSS"
+    "name": "Linux"
   },
   {
     "img": "./assets/icons/tools/photoshop.png",
-    "name": "CSS"
+    "name": "Photoshop"
   },
   {
     "img": "./assets/icons/tools/terminal.png",
-    "name": "CSS"
+    "name": "Terminal"
+  },
+  {
+    "img": "./assets/icons/tools/npm.png",
+    "name": "NPM"
   }
 ]

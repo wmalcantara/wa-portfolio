@@ -12,11 +12,11 @@ const Container = styled.div`
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
 
   background: var(--dark);
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
 
@@ -49,35 +49,37 @@ const Background = styled.div`
   background-position: 50%;
   background-size: cover;
 
-  @media (max-width: 768px){
+  @media (max-width: 768px) {
     top: 50px;
 
     position: relative;
-    
+
     height: 40vh;
     min-height: 200px;
 
     width: 100%;
     min-width: 450px;
 
-    background-image: linear-gradient(-366deg, #000000 20%, rgba(0, 0, 0, 0.05) 55%),
-    url(./assets/img/walter-background2.png);
-
+    background-image: linear-gradient(
+        -366deg,
+        #000000 20%,
+        rgba(0, 0, 0, 0.05) 55%
+      ),
+      url(./assets/img/walter-background2.png);
   }
 `;
 
 const SectionBox = styled.section`
   grid-column: 2;
   width: 100%;
-  padding: .625rem;
+  padding: 0.625rem;
 
-  @media (max-width: 768px){
-    p, li {
-      font-size: .875rem;
-
+  @media (max-width: 768px) {
+    p,
+    li {
+      font-size: 0.875rem;
     }
   }
-
 `;
 
 const TypeWriter = styled.div`
@@ -90,7 +92,7 @@ const TypeWriter = styled.div`
     font-weight: 700;
   }
 
-  //type animation
+  //typewriting animation
   h1:after {
     content: '|';
     opacity: 1;
@@ -105,10 +107,10 @@ const TypeWriter = styled.div`
     50% {
       opacity: 0;
     }
-  } //type animation
+  } //typewriting animation
 
-  @media (max-width: 768px){
-    padding: 2rem .875rem;
+  @media (max-width: 768px) {
+    padding: 2rem 0.875rem;
 
     h1 {
       font-size: 3rem;
@@ -141,7 +143,11 @@ const AboutMe = styled.div`
         }
       }
 
-      
+      @media (max-width: 768px) {
+        svg {
+          min-width: 30px;
+        }
+      }
     }
 
     li:last-child {
@@ -176,13 +182,12 @@ const AboutMe = styled.div`
             fill: var(--secondary);
           }
         }
-
-        
       }
 
-      @media (max-width: 768px){
+      @media (max-width: 768px) {
         p {
-          font-size: .875rem;
+          font-size: 0.875rem;
+          margin-right: 0.4rem;
         }
 
         button {
@@ -191,15 +196,13 @@ const AboutMe = styled.div`
 
         svg {
           display: none;
-        }            
+        }
       }
     }
 
     li + li {
       margin-left: 1rem;
     }
-
-    
   }
 
   &:nth-child(2) {
@@ -212,7 +215,6 @@ const AboutMe = styled.div`
 
     margin-top: 0.875rem;
   }
-  
 `;
 
 const Techs = styled.div`
@@ -305,35 +307,34 @@ const SobreMim = () => {
   let techsList = useRef(null);
   let toolsList = useRef(null);
 
-  // //GSAP
-  // useEffect(() => {
-  //   TweenMax.fromTo(
-  //     bgPhoto,
-  //     0.7,
-  //     { y: -50, opacity: 0 },
-  //     { y: 0, delay: 0.8, opacity: 1, ease: Power3.easeIn },
-  //   );
-  //   TweenMax.fromTo(
-  //     aboutMe,
-  //     0.7,
-  //     { y: -50, opacity: 0 },
-  //     { y: 0, delay: 1, opacity: 1, ease: Power3.easeIn },
-  //   );
-  //   TweenMax.fromTo(
-  //     techsList,
-  //     0.7,
-  //     { y: -50, opacity: 0 },
-  //     { y: 0, delay: 1.2, opacity: 1, ease: Power3.easeIn },
-  //   );
-  //   TweenMax.fromTo(
-  //     toolsList,
-  //     0.7,
-  //     { y: -50, opacity: 0 },
-  //     { y: 0, delay: 1.4, opacity: 1, ease: Power3.easeIn },
-  //   );
-  // }, []);
+  //GSAP
+  useEffect(() => {
+    TweenMax.fromTo(
+      bgPhoto,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 0.8, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      aboutMe,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 1, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      techsList,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 1.2, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      toolsList,
+      0.7,
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 1.4, opacity: 1, ease: Power3.easeIn },
+    );
+  }, []);
 
-  //Typewriter
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter');
 
@@ -349,7 +350,7 @@ const SobreMim = () => {
     }
 
     typeWriter(typewriter);
-  }, []);
+  }, []); //Typewriter
 
   return (
     <>
@@ -463,8 +464,6 @@ const SobreMim = () => {
                     </span>
                   </a>
                 </button>
-
-                
               </li>
             </ul>
 
@@ -478,9 +477,9 @@ const SobreMim = () => {
                 Instituto Federal de São Paulo, Campus de Jacareí.
               </p>
               <p>
-                Olá, meu nome é Walter Alcantara, tenho 23 anos, casado e se
-                considera como um entusiasta e um apaixonado por tecnologia. Amo
-                poder aprender uma nova tecnologia, explorar e descobrir como é
+                Olá, meu nome é Walter Alcantara, tenho 23 anos, sou casado e me
+                considero como um entusiasta e um apaixonado por tecnologia. Amo
+                aprender uma nova tecnologia, explorar e descobrir como é
                 possível aplicar.
               </p>
             </span>
@@ -530,7 +529,6 @@ const SobreMim = () => {
             </section>
           </Tools>
         </SectionBox>
-
       </Container>
     </>
   );

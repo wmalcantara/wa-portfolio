@@ -30,5 +30,13 @@
   {
     "img": "./assets/icons/techs/sass.png",
     "name": "SASS"
+  },
+  {
+    "img": "./assets/icons/techs/styled-components.png",
+    "name": "Styled Components"
+  },
+  {
+    "img": "./assets/icons/techs/GSAP.png",
+    "name": "GSAP"
   }
 ]

@@ -4,13 +4,11 @@ import { TweenMax, Power3 } from 'gsap';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
-
-
 const Container = styled.div`
   background: var(--dark);
 
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 1fr;
 
   max-width: 70%;
 
@@ -49,7 +47,7 @@ const Background = styled.div`
 `;
 
 const TypeWriter = styled.div`
-  padding-top: 8rem;
+  padding: 8rem 0.875rem 0.875rem 0px;
   position: relative;
   color: var(--white);
 
@@ -74,10 +72,17 @@ const TypeWriter = styled.div`
       opacity: 0;
     }
   } //type animation
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3.5rem;
+      padding: 2rem 0.875rem;
+    }
+  }
 `;
 
 const ContactMe = styled.div`
-  padding: 4.5rem 0 0 0.875rem;
+  padding: 2rem 0.875rem;
   color: var(--white);
   width: 100%;
   position: relative;
@@ -138,7 +143,7 @@ const Contato = () => {
       { x: -50, opacity: 0 },
       { x: 0, delay: 0.7, opacity: 1, ease: Power3.easeIn },
     );
-  }, []);
+  }, []); //GSAP
 
   //Typewriter
   useEffect(() => {
@@ -156,7 +161,7 @@ const Contato = () => {
     }
 
     typeWriter(typewriter);
-  }, []);
+  }, []); //Typewriter
 
   let contactMeBox = useRef(null);
 
