@@ -1,7 +1,6 @@
 import './global.css';
 
 import MenuBar from './components/Nav/MenuBar.js';
-import Footer from './components/Footer.js';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 

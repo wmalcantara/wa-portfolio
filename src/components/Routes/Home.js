@@ -1,3 +1,5 @@
+//home
+
 import React, { useEffect, useRef } from 'react';
 import { TweenMax, Power3 } from 'gsap';
 import { Link } from 'react-router-dom';
@@ -7,10 +9,139 @@ import styled from 'styled-components';
 import '../../global.css';
 import Footer from '../Footer';
 
-const Container = styled.div`
+const Div = styled.div`
   width: 100%;
   max-width: 1366px;
   margin: 0 auto;
+
+  .bg-photo {
+    display: block;
+
+    position: fixed;
+    height: 70%;
+    width: 100%;
+    max-width: 1366px;
+
+    z-index: -1;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(
+        274deg,
+        #000000 5%,
+        rgba(0, 0, 0, 0.05) 26%
+      ),
+      linear-gradient(96deg, #000000 28%, rgba(0, 0, 0, 0.05) 46%),
+      url(./assets/img/walter-background.png);
+
+    @media (max-width: 768px) {
+      top: auto;
+
+      position: relative;
+      height: 250px;
+      width: 100%;
+
+      background-image: radial-gradient(
+          94% 63% at 31% 66%,
+          rgba(0, 0, 0, 0) 53%,
+          #000000 100%
+        ),
+        url(./assets/img/walter-background.png);
+    }
+  }
+
+  .hello {
+    width: 25%;
+    height: 100%;
+
+    padding: 0.875rem;
+    margin-top: 2rem;
+
+    position: fixed;
+
+    //Typewriter
+    .typewriter-title {
+      color: var(--white);
+
+      //type animation
+      &::after {
+        content: '|';
+        opacity: 1;
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      } //type animation
+    } //Typewriter
+
+    //btnLearnMore
+    .btnLearnMore {
+      opacity: 0; //start 0 before animation;
+
+      display: block;
+      width: 100%;
+
+      border-radius: 3px;
+      color: var(--secondary);
+
+      text-decoration: none;
+      text-transform: capitalize;
+      font-weight: 700;
+
+      text-align: center;
+      background: transparent;
+      border: 2px solid var(--secondary);
+
+      padding: 0.875rem;
+      margin-top: 0.875rem;
+
+      position: relative;
+      transition: 0.7s ease;
+
+      //animation on hover
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        z-index: -1;
+        width: 0%;
+        height: 103%;
+        transition: 0.7s ease;
+        background: var(--secondary);
+      }
+
+      &:hover {
+        color: var(--white);
+      }
+
+      &:hover::after {
+        width: 101%;
+      } //animation on hover
+    } //btnLearnMore
+
+    @media (max-width: 768px) {
+      position: relative;
+      margin-top: 4rem;
+      width: 100%;
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      a {
+        justify-self: center;
+      }
+    }
+  }
 
   @media (max-width: 768px) {
     display: flex;
@@ -18,154 +149,21 @@ const Container = styled.div`
   }
 `;
 
-const Background = styled.div`
-
-  display: block;
-
-  position: fixed;
-  height: 70%;
-  width: 100%;
-  max-width: 1366px;
-
-  z-index: -1;
-
-  background-image: linear-gradient(
-      274.46deg,
-      #000000 5.44%,
-      rgba(0, 0, 0, 0.05) 26.18%
-    ),
-    linear-gradient(96.68deg, #000000 28.16%, rgba(0, 0, 0, 0.05) 45.61%),
-    url(./assets/img/walter-background.png);
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-
-  @media (max-width: 768px) {
-    top: auto;
-
-    position: relative;
-    height: 250px;
-    width: 100%;
-
-    background-image: radial-gradient(
-        94% 63% at 31% 66%,
-        rgba(0, 0, 0, 0) 52.7%,
-        #000000 100%
-      ),
-      url(./assets/img/walter-background.png);
-  }
-`;
-
-const Hello = styled.div`
-  width: 25%;
-  height: 100%;
-
-  padding: 0.875rem;
-  margin-top: 2rem;
-
-  position: fixed;
-
-  //btnLearnMore
-  & > a {
-    opacity: 0; //start 0 before animation;
-
-    display: block;
-    width: 100%;
-
-    border-radius: 3px;
-    color: var(--secondary);
-
-    text-decoration: none;
-    text-transform: capitalize;
-    font-weight: 700;
-
-    text-align: center;
-    background: transparent;
-    border: 2px solid var(--secondary);
-
-    padding: 0.875rem;
-    margin-top: 1rem;
-
-    position: relative;
-    transition: 0.7s ease;
-
-    //animation on hover
-    &::after {
-      content: '';
-      display: block;
-      position: absolute;
-      top: -1px;
-      left: -1px;
-      z-index: -1;
-      width: 0%;
-      height: 103%;
-      transition: 0.7s ease;
-      background: var(--secondary);
-    }
-
-    &:hover {
-      color: var(--white);
-    }
-
-    &:hover::after {
-      width: 101%;
-    } //animation on hover
-  } //btnLearnMore
-
-  //Typewriter
-  h1 {
-    font-family: 700 'Roboto Mono';
-    color: var(--white);
-    font-size: 4rem;
-    font-weight: 700;
-
-    //type animation
-    &::after {
-      content: '|';
-      opacity: 1;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0;
-      }
-    } //type animation
-  } //Typewriter
-
-  @media (max-width: 768px) {
-    position: relative;
-    margin-top: 4rem;
-    width: 100%;
-    h1 {
-      font-size: 2.5rem;
-    }
-
-    a {
-      justify-self: center;
-    }
-  }
-`;
-
 const SocialBox = styled.div`
-  margin-top: 4.5rem;
+  margin-top: 2rem;
 
   display: flex;
   justify-content: space-evenly;
   align-items: center;
 
   svg {
-    height: 40px;
     cursor: pointer;
+
+    height: 40px;
     transition: 0.7s ease;
     fill: var(--secondary);
 
-    & path {
+    path {
       transition: 0.7s ease;
     }
 
@@ -176,13 +174,13 @@ const SocialBox = styled.div`
     &:hover path {
       fill: var(--white);
     }
-  } //svg
+  }
 `;
 
 const Home = () => {
+  let bgPhoto = useRef(null);
   let btnLearnMore = useRef(null);
   let socialBox = useRef(null);
-  let bgPhoto = useRef(null);
 
   //GSAP
   useEffect(() => {
@@ -192,23 +190,25 @@ const Home = () => {
       { y: -50, opacity: 0 },
       { y: 0, delay: 2.3, opacity: 1, ease: Power3.easeIn },
     );
+
     TweenMax.fromTo(
       btnLearnMore,
       0.7,
-      { x: -50, opacity: 0 },
-      { x: 0, delay: 2.6, opacity: 1, ease: Power3.easeIn },
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 2.6, opacity: 1, ease: Power3.easeIn },
     );
+
     TweenMax.fromTo(
       socialBox,
       0.7,
-      { x: -50, opacity: 0 },
-      { x: 0, delay: 3.2, opacity: 1, ease: Power3.easeIn },
+      { y: -50, opacity: 0 },
+      { y: 0, delay: 2.9, opacity: 1, ease: Power3.easeIn },
     );
-  }, []);
+  }, []); //GSAP
 
-  //TypeWriter function
+  //TypeWriter Function
   useEffect(() => {
-    const typewriter = document.querySelector('.typewriter');
+    const typewriter = document.querySelector('.typewriter-title');
 
     function typeWriter(element) {
       if (element !== null) {
@@ -216,55 +216,41 @@ const Home = () => {
 
         element.innerHTML = '';
         textArr.forEach((letter, i) => {
-          setTimeout(() => (element.innerHTML += letter), 75 * i);
+          setTimeout(() => (element.innerHTML += letter), 70 * i);
         });
       }
     }
 
     typeWriter(typewriter);
-  }, []);
+  }, []); //TypeWriter Function
 
   return (
     <>
       <Helmet>
-        <title>Walter Alcantara | Inicio</title>
+        <title>W.A. | Início</title>
       </Helmet>
 
-      <Container>
-        <Background
-          ref={(element) => {
-            bgPhoto = element;
-          }}
-        />
+      <Div className="home">
+        <div className="bg-photo" ref={(el) => (bgPhoto = el)} />
 
-        <Hello>
-          <h1 className="typewriter">Olá, me chamo Walter Alcantara.</h1>
+        <div className="hello">
+          <h1 className="typewriter-title">Olá, me chamo Walter Alcantara.</h1>
 
           <Link
+            className="btnLearnMore"
             to="/sobremim"
-            ref={(element) => {
-              btnLearnMore = element;
-            }}
+            ref={(el) => (btnLearnMore = el)}
           >
             Saiba mais
           </Link>
 
-          <SocialBox
-            ref={(element) => {
-              socialBox = element;
-            }}
-          >
-            {/* github icon */}
-            <a href="https://www.github.com/wmalcantara" target="_blank">
-              <svg
-                id="github"
-                x="0px"
-                y="0px"
-                fill=""
-                width="50px"
-                height="50px"
-                viewBox="0 0 438.549 438.549"
-              >
+          <SocialBox ref={(el) => (socialBox = el)}>
+            <a
+              href="https://www.github.com/wmalcantara"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg viewBox="0 0 438.549 438.549">
                 <path
                   d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
             c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
@@ -290,20 +276,12 @@ const Home = () => {
               </svg>
             </a>
 
-            {/* linkedin icon */}
             <a
               href="https://www.linkedin.com/in/walteralcantara"
+              rel="noreferrer"
               target="_blank"
             >
-              <svg
-                id="linkedin"
-                x="0px"
-                y="0px"
-                fill=""
-                width="50px"
-                height="50px"
-                viewBox="0 0 510 510"
-              >
+              <svg viewBox="0 0 510 510">
                 <path
                   id="li"
                   d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z
@@ -314,8 +292,9 @@ const Home = () => {
               </svg>
             </a>
           </SocialBox>
-        </Hello>
-      </Container>
+        </div>
+      </Div>
+
       <Footer />
     </>
   );

@@ -1,3 +1,5 @@
+//footer
+
 import React from 'react';
 import styled from 'styled-components';
 
@@ -8,18 +10,17 @@ const Footer = () => {
 
     text-align: center;
 
+    width: 100%;
+
     left: 0;
     bottom: 0;
-    width: 100%;
     position: fixed;
 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
 
-    p {
-      & > span {
-        font-size: 1.5rem;
-        color: var(--secondary);
-      }
+    span {
+      font-size: 1rem;
+      color: var(--secondary);
     }
 
     a {
@@ -32,11 +33,16 @@ const Footer = () => {
       position: relative;
     }
   `;
+
   return (
     <Footer>
       <p>
         Feito com <span>❤️</span> por{' '}
-        <a href="https://linkedin.com/in/walteralcantara" target="_blank">
+        <a
+          href="https://linkedin.com/in/walteralcantara"
+          rel="noreferrer"
+          target="_blank"
+        >
           Walter Alcantara
         </a>
       </p>

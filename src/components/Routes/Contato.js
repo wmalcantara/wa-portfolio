@@ -1,103 +1,98 @@
+//contato
+
 import React, { useEffect, useRef } from 'react';
 import { TweenMax, Power3 } from 'gsap';
 
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
-const Container = styled.div`
-  background: var(--dark);
+import '../../global.css';
+
+const Div = styled.div`
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
 
-  max-width: 70%;
+  .bg-photo {
+    grid-column: 1;
 
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70%;
+    height: 100%;
+    opacity: 0.3;
+    max-width: 960px;
+    background-image: radial-gradient(
+        62.05% 60.79% at 27.64% 69.14%,
+        rgba(0, 0, 0, 0.25) 75.15%,
+        #000000 100%
+      ),
+      url(./assets/img/code-1.jpg);
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+  }
+
+  .typewriter-title {
+    grid-column: 2;
+    z-index: 1;
+
+    margin-top: 8rem;
     color: var(--white);
-  }
-`;
 
-const SectionBox = styled.section`
-  grid-column: 2;
-  width: 100%;
-`;
-
-const Background = styled.div`
-  grid-column: 1;
-
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 70%;
-  height: 100%;
-  opacity: 0.3;
-  max-width: 960px;
-  background-image: radial-gradient(
-      62.05% 60.79% at 27.64% 69.14%,
-      rgba(0, 0, 0, 0.25) 75.15%,
-      #000000 100%
-    ),
-    url(./assets/img/code-1.jpg);
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size: cover;
-`;
-
-const TypeWriter = styled.div`
-  padding: 8rem 0.875rem 0.875rem 0px;
-  position: relative;
-  color: var(--white);
-
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-  }
-
-  //type animation
-  h1:after {
-    content: '|';
-    opacity: 1;
-    animation: blink 1s infinite;
-  }
-
-  @keyframes blink {
-    0%,
-    100% {
+    //type animation
+    &::after {
+      content: '|';
       opacity: 1;
+      animation: blink 1s infinite;
     }
-    50% {
-      opacity: 0;
+
+    @keyframes blink {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
     }
   } //type animation
 
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 3.5rem;
-      padding: 2rem 0.875rem;
+  .contact-me {
+    grid-column: 2;
+
+    padding: 2rem 0.875rem;
+    color: var(--white);
+    width: 100%;
+    position: relative;
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .email {
+      color: var(--secondary);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 3.5rem;
+        padding: 2rem 0.875rem;
+      }
     }
   }
-`;
 
-const ContactMe = styled.div`
-  padding: 2rem 0.875rem;
-  color: var(--white);
-  width: 100%;
-  position: relative;
-
-  p {
-    font-weight: 300;
-  }
-
-  a {
-    font-weight: 700;
-    text-decoration: none;
-  }
-
-  div:nth-child(2) {
-    margin-top: 1rem;
+  @media (max-width: 768px) {
+    .contact-me,
+    .typewriter-title {
+      border-radius: 3px;
+      background-color: rgba(0, 0, 0, 0.85);
+    }
   }
 `;
 
@@ -135,11 +130,20 @@ const SocialBox = styled.div`
 `;
 
 const Contato = () => {
+  let bgPhoto = useRef(null);
+  let contactMe = useRef(null);
+
   //GSAP
   useEffect(() => {
     TweenMax.fromTo(
-      contactMeBox,
+      bgPhoto,
       0.7,
+      { x: -50, opacity: 0 },
+      { x: 0, delay: 0.7, opacity: 1, ease: Power3.easeIn },
+    );
+    TweenMax.fromTo(
+      contactMe,
+      1.2,
       { x: -50, opacity: 0 },
       { x: 0, delay: 0.7, opacity: 1, ease: Power3.easeIn },
     );
@@ -147,7 +151,7 @@ const Contato = () => {
 
   //Typewriter
   useEffect(() => {
-    const typewriter = document.querySelector('.typewriter');
+    const typewriter = document.querySelector('.typewriter-title');
 
     function typeWriter(element) {
       if (element !== null) {
@@ -163,55 +167,41 @@ const Contato = () => {
     typeWriter(typewriter);
   }, []); //Typewriter
 
-  let contactMeBox = useRef(null);
-
   return (
     <>
       <Helmet>
         <title>Walter Alcantara | Contato</title>
       </Helmet>
-      <Container>
-        <Background />
 
-        <SectionBox>
-          <TypeWriter>
-            <h1 className="typewriter">contato.</h1>
-          </TypeWriter>
+      <Div>
+        <div className="bg-photo" ref={(el) => (bgPhoto = el)} />
 
-          <ContactMe
-            ref={(element) => {
-              contactMeBox = element;
-            }}
+        <h1 className="typewriter-title">contato.</h1>
+
+        <div className="contact-me" ref={(el) => (contactMe = el)}>
+          <p>
+            Espero que tenha gostado do meu portfolio, se gostou das minhas
+            habilidades você pode entrar em contato comigo, ficarei feliz em
+            respondê-lo.
+          </p>
+
+          <a
+            className="email"
+            href="mailto:waltermalcantara@gmail.com"
+            title="Envie-me um email"
           >
-            <p>
-              Espero que tenha gostado do meu portfolio, se gostou das minhas
-              habilidades você pode entrar em contato comigo, ficarei feliz em
-              respondê-lo.
-            </p>
+            waltermalcantara@gmail.com
+          </a>
 
-            <div>
-              <a
-                href="mailto:waltermalcantara@gmail.com"
-                title="Envie-me um email"
-                style={{ color: 'var(--secondary)' }}
-              >
-                waltermalcantara@gmail.com
-              </a>
-            </div>
-
-            <SocialBox>
-              <a href="https://www.github.com/wmalcantara" target="_blank">
-                <svg
-                  id="github"
-                  x="0px"
-                  y="0px"
-                  fill=""
-                  width="50px"
-                  height="50px"
-                  viewBox="0 0 438.549 438.549"
-                >
-                  <path
-                    d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
+          <SocialBox>
+            <a
+              href="https://www.github.com/wmalcantara"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg viewBox="0 0 438.549 438.549">
+                <path
+                  d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
             c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
             c0,47.78,13.94,90.745,41.827,128.906c27.884,38.164,63.906,64.572,108.063,79.227c5.14,0.954,8.945,0.283,11.419-1.996
             c2.475-2.282,3.711-5.14,3.711-8.562c0-0.571-0.049-5.708-0.144-15.417c-0.098-9.709-0.144-18.179-0.144-25.406l-6.567,1.136
@@ -231,36 +221,28 @@ const Contato = () => {
             c9.894,8.562,14.842,22.077,14.842,40.539v60.237c0,3.422,1.19,6.279,3.572,8.562c2.379,2.279,6.136,2.95,11.276,1.995
             c44.163-14.653,80.185-41.062,108.068-79.226c27.88-38.161,41.825-81.126,41.825-128.906
             C438.536,184.851,428.728,148.168,409.132,114.573z"
-                  />
-                </svg>
-              </a>
+                />
+              </svg>
+            </a>
 
-              <a
-                href="https://www.linkedin.com/in/walteralcantara"
-                target="_blank"
-              >
-                <svg
-                  id="linkedin"
-                  x="0px"
-                  y="0px"
-                  fill=""
-                  width="50px"
-                  height="50px"
-                  viewBox="0 0 510 510"
-                >
-                  <path
-                    id="li"
-                    d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z
+            <a
+              href="https://www.linkedin.com/in/walteralcantara"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <svg viewBox="0 0 510 510">
+                <path
+                  id="li"
+                  d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z
                     M153,433.5H76.5V204H153V433.5z M114.75,160.65c-25.5,0-45.9-20.4-45.9-45.9s20.4-45.9,45.9-45.9s45.9,20.4,45.9,45.9
                     S140.25,160.65,114.75,160.65z M433.5,433.5H357V298.35c0-20.399-17.85-38.25-38.25-38.25s-38.25,17.851-38.25,38.25V433.5H204
                     V204h76.5v30.6c12.75-20.4,40.8-35.7,63.75-35.7c48.45,0,89.25,40.8,89.25,89.25V433.5z"
-                  />
-                </svg>
-              </a>
-            </SocialBox>
-          </ContactMe>
-        </SectionBox>
-      </Container>
+                />
+              </svg>
+            </a>
+          </SocialBox>
+        </div>
+      </Div>
     </>
   );
 };

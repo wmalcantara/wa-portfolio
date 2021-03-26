@@ -11,7 +11,6 @@ const Ul = styled.ul`
   text-align: center;
 
   li {
-    
     padding: 1rem;
     text-transform: lowercase;
 
@@ -26,8 +25,8 @@ const Ul = styled.ul`
       font-weight: 700;
     }
 
-    @media (max-width: 768px){
-      &::after{
+    @media (max-width: 768px) {
+      &::after {
         content: '';
         margin-top: 1rem;
         display: block;
@@ -35,7 +34,7 @@ const Ul = styled.ul`
         height: 2px;
         background: var(--secondary);
       }
-    }       
+    }
   }
 
   @media (max-width: 768px) {
@@ -49,12 +48,7 @@ const Ul = styled.ul`
     width: 200px;
     transition: transform 0.3s ease-in-out;
     padding-top: 4rem;
-    border-left: 1px solid rgba(255,255,255,0.15);
-
-    
-      
-
-      
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
   }
 `;
 
