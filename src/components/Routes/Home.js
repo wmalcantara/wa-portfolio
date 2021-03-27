@@ -11,7 +11,7 @@ import Footer from '../Footer';
 
 const Div = styled.div`
   width: 100%;
-  max-width: 1366px;
+  max-width: 960px;
   margin: 0 auto;
 
   .bg-photo {
