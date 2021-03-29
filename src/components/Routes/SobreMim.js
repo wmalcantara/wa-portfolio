@@ -29,14 +29,14 @@ const Div = styled.div`
     height: 100%;
     max-width: 960px;
     background-image: radial-gradient(
-        59.41% 59.41% at 25.44% 64.55%,
-        rgba(0, 0, 0, 0.25) 75.15%,
+        60% 60% at 25% 65%,
+        rgba(0, 0, 0, 0.25) 75%,
         #000000 100%
       ),
       radial-gradient(
-        134.49% 277.33% at 20.74% 58.61%,
-        rgba(0, 0, 0, 0.15) 81.25%,
-        #000000 94.85%
+        134% 277% at 20% 58%,
+        rgba(0, 0, 0, 0.15) 81%,
+        #000000 95%
       ),
       url(./assets/img/walter-background2.png);
     background-repeat: no-repeat;

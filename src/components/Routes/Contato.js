@@ -88,6 +88,8 @@ const Div = styled.div`
   }
 
   @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+
     .contact-me,
     .typewriter-title {
       border-radius: 3px;
