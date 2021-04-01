@@ -1,0 +1,14 @@
+[
+  {
+    "img": "./assets/portfolio/pomoreact.png",
+    "name": "Pomo.react",
+    "description": "Pomo.react é uma aplicação de desenvolvimento próprio, baseado na técnica pomodoro, consiste em ser uma técnica de foco por durante 25 minutos, e 5 minutos de pausa. Construido em react.js.",
+    "link": "https://pomoreact.vercel.app/"
+  },
+  {
+    "img": "./assets/portfolio/links.png",
+    "name": "Links",
+    "description": "Links é somente uma aplicação inspirada na plataforma Linktree permitindo ao usuário agrupar e divulgar todos os links de suas redes sociais. Construido em react.js, next.js e framer motion.",
+    "link": "https://walteralcantara-links.vercel.app/"
+  }
+]

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 import styled from 'styled-components';
 
@@ -112,6 +113,23 @@ const SocialBox = styled.div`
 `;
 
 export default function Contato() {
+  useEffect(() => {
+    const typewriter = document.querySelector('.typewriter-title');
+
+    function typeWriter(element) {
+      if (element !== null) {
+        var textArr = element.innerHTML.split('');
+
+        element.innerHTML = '';
+        textArr.forEach((letter, i) => {
+          setTimeout(() => (element.innerHTML += letter), 70 * i);
+        });
+      }
+    }
+
+    typeWriter(typewriter);
+  }, []);
+
   return (
     <>
       <MenuBar />

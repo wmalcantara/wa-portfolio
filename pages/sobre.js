@@ -215,6 +215,23 @@ const Main = styled.main`
 `;
 
 export default function Sobre() {
+  useEffect(() => {
+    const typewriter = document.querySelector('.typewriter-title');
+
+    function typeWriter(element) {
+      if (element !== null) {
+        var textArr = element.innerHTML.split('');
+
+        element.innerHTML = '';
+        textArr.forEach((letter, i) => {
+          setTimeout(() => (element.innerHTML += letter), 70 * i);
+        });
+      }
+    }
+
+    typeWriter(typewriter);
+  }, []);
+
   return (
     <>
       <Head>

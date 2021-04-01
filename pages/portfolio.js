@@ -7,13 +7,15 @@ import styled from 'styled-components';
 
 import MenuBar from './Nav/MenuBar';
 
+import portfolios from '../portfolios.json';
+
 const Main = styled.main`
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 4fr;
 
   .bg-photo {
     grid-column: 1;
@@ -59,11 +61,13 @@ const Main = styled.main`
   .portfolio {
     grid-column: 2;
     padding: 0.875rem;
+
     & > p {
       color: var(--white);
       width: 100%;
       margin-bottom: 1rem;
     }
+
     .typewriter-title {
       color: var(--white);
       padding: 4rem 0px 2rem 0px;
@@ -93,15 +97,19 @@ const Main = styled.main`
       display: flex;
       align-items: center;
       padding: 0.875rem;
+      margin-bottom: 1rem;
+
       .img {
         flex: 0.3;
         border: 1px solid var(--secondary);
         border-radius: 3px;
-        min-height: 150px;
-        min-width: 150px;
-        background-image: url(./assets/portfolio-img/pomoreact.png);
+        min-height: 200px;
+        min-width: 200px;
+
         background-position: center;
         background-repeat: inherit;
+
+        margin-right: 0.875rem;
       }
 
       .description-box {
@@ -135,11 +143,8 @@ const Main = styled.main`
           }
         }
       }
-      //space between img and desc-box
-      div + div {
-        margin-left: 0.875rem;
-      }
     }
+
     @media (max-width: 768px) {
       .card {
         .img {
@@ -151,8 +156,10 @@ const Main = styled.main`
       }
     }
   }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+
     .portfolio {
       grid-column: 1;
     }
@@ -160,7 +167,6 @@ const Main = styled.main`
 `;
 
 export default function Portfolio() {
-  //TypeWriter Function
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
 
@@ -197,38 +203,40 @@ export default function Portfolio() {
             alguns deles são clones, projetos de bootcamp e projetos próprio.
           </p>
 
-          <div className="card">
-            <div className="img" />
-            <div className="description-box">
-              <h2>Pomo.react</h2>
-              <p>
-                Pomo.react é uma aplicação de desenvolvimento próprio, baseado
-                na técnica pomodoro, consiste em ser uma técnica de foco por
-                durante 25 minutos, e 5 minutos de pausa. Construido em react
-                como meio de estudo da tecnologia.
-              </p>
-              <a
-                href="https://pomoreact.vercel.app"
-                rel="noreferrer"
-                target="_blank"
-              >
-                Visitar site
-                <span>
-                  <svg viewBox="0 0 612 612">
-                    <path
-                      d="M331.685,425.378c-7.478,7.479-7.478,19.584,0,27.043c7.479,7.478,19.584,7.478,27.043,0l131.943-131.962
+          {portfolios.map((portfolio) => {
+            console.log(portfolio.name);
+            return (
+              <>
+                <div className="card">
+                  <img
+                    className="img"
+                    src={portfolio.img}
+                    alt={portfolio.name}
+                  />
+                  <div className="description-box">
+                    <h2>{portfolio.name}</h2>
+                    <p>{portfolio.description}</p>
+                    <a href={portfolio.link} target="_blank">
+                      Visitar site
+                      <span>
+                        <svg viewBox="0 0 612 612">
+                          <path
+                            d="M331.685,425.378c-7.478,7.479-7.478,19.584,0,27.043c7.479,7.478,19.584,7.478,27.043,0l131.943-131.962
 c3.979-3.979,5.681-9.276,5.412-14.479c0.269-5.221-1.434-10.499-5.412-14.477L358.728,159.56
 c-7.459-7.478-19.584-7.478-27.043,0c-7.478,7.478-7.478,19.584,0,27.042l100.272,100.272H19.125C8.568,286.875,0,295.443,0,306
 c0,10.557,8.568,19.125,19.125,19.125h412.832L331.685,425.378z M535.5,38.25H153c-42.247,0-76.5,34.253-76.5,76.5v76.5h38.25
 v-76.5c0-21.114,17.117-38.25,38.25-38.25h382.5c21.133,0,38.25,17.136,38.25,38.25v382.5c0,21.114-17.117,38.25-38.25,38.25H153
 c-21.133,0-38.25-17.117-38.25-38.25v-76.5H76.5v76.5c0,42.247,34.253,76.5,76.5,76.5h382.5c42.247,0,76.5-34.253,76.5-76.5
 v-382.5C612,72.503,577.747,38.25,535.5,38.25z"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </div>
-          </div>
+                          />
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </>
+            );
+          })}
         </div>
       </Main>
     </>
