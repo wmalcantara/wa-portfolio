@@ -1,14 +1,10 @@
-//contato
-
-import React, { useEffect, useRef } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import { TweenMax, Power3 } from 'gsap';
-
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
 
-import '../../global.css';
-
-const Div = styled.div`
+const Main = styled.main`
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
@@ -17,107 +13,149 @@ const Div = styled.div`
   grid-template-columns: 1fr 1fr;
 
   .bg-photo {
-    grid-column: 1;
-
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 100%;
-    opacity: 0.3;
+    height: 450px;
+    width: 100%;
     max-width: 960px;
-    background-image: radial-gradient(
-        62.05% 60.79% at 27.64% 69.14%,
-        rgba(0, 0, 0, 0.25) 75.15%,
-        #000000 100%
-      ),
-      url(./assets/img/code-1.jpg);
+    z-index: -1;
+    position: fixed;
+    grid-column: 2;
+
     background-repeat: no-repeat;
-    background-position: 50%;
+    background-position: center;
     background-size: cover;
+    background-image: linear-gradient(
+        274deg,
+        #000000 5%,
+        rgba(0, 0, 0, 0.05) 26%
+      ),
+      linear-gradient(96deg, #000000 28%, rgba(0, 0, 0, 0.05) 46%),
+      url(./assets/img/walter-background.png);
+
+    @media (max-width: 768px) {
+      top: auto;
+
+      position: relative;
+      height: 250px;
+      width: 100%;
+
+      background-image: radial-gradient(
+          94% 63% at 31% 66%,
+          rgba(0, 0, 0, 0) 53%,
+          #000000 100%
+        ),
+        url(./assets/img/walter-background.png);
+    }
   }
 
-  .typewriter-title {
-    grid-column: 2;
-    z-index: 1;
+  .hello {
+    width: 320px;
+    padding: 0.875rem;
+    margin-top: 2rem;
+    position: fixed;
+    grid-column: 1;
 
-    margin-top: 8rem;
-    color: var(--white);
+    //Typewriter
+    .typewriter-title {
+      color: var(--white);
 
-    //type animation
-    &::after {
-      content: '|';
-      opacity: 1;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%,
-      100% {
+      //type animation
+      &::after {
+        content: '|';
         opacity: 1;
+        animation: blink 1s infinite;
       }
-      50% {
-        opacity: 0;
-      }
-    }
-  } //type animation
 
-  .contact-me {
-    grid-column: 2;
-
-    padding: 2rem 0.875rem;
-    color: var(--white);
-    width: 100%;
-    position: relative;
-
-    p {
-      margin-bottom: 1rem;
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      } //type animation
     }
 
-    .email {
+    //btnLearnMore
+    & > a {
+      display: block;
+      width: 100%;
+
+      border-radius: 3px;
       color: var(--secondary);
+
+      text-decoration: none;
+      text-transform: capitalize;
+      font-weight: 700;
+
+      text-align: center;
+      background: transparent;
+      border: 2px solid var(--secondary);
+
+      padding: 0.875rem;
+      margin-top: 0.875rem;
+
+      position: relative;
+      transition: 0.7s ease;
+
+      //animation on hover
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        z-index: -1;
+        width: 0%;
+        height: 103%;
+        transition: 0.7s ease;
+        background: var(--secondary);
+      }
+
+      &:hover {
+        color: var(--white);
+      }
+
+      &:hover::after {
+        width: 101%;
+      }
     }
 
     @media (max-width: 768px) {
+      position: relative;
+      margin-top: 4rem;
+      width: 100%;
       h1 {
-        font-size: 3.5rem;
-        padding: 2rem 0.875rem;
+        font-size: 2.5rem;
+      }
+
+      a {
+        justify-self: center;
       }
     }
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-
-    .contact-me,
-    .typewriter-title {
-      border-radius: 3px;
-      background-color: rgba(0, 0, 0, 0.85);
-    }
+    display: flex;
+    flex-direction: column-reverse;
   }
 `;
 
 const SocialBox = styled.div`
+  margin-top: 2rem;
+
   display: flex;
-  width: 90px;
-  margin-top: 1rem;
-
-  a {
-    fill: var(--secondary);
-  }
-
-  a + a {
-    margin-left: 1rem;
-  }
+  justify-content: space-evenly;
+  align-items: center;
 
   svg {
-    height: 40px;
     cursor: pointer;
+
+    height: 40px;
     transition: 0.7s ease;
     fill: var(--secondary);
 
-    & path {
+    path {
       transition: 0.7s ease;
     }
 
@@ -128,30 +166,11 @@ const SocialBox = styled.div`
     &:hover path {
       fill: var(--white);
     }
-  } //svg
+  }
 `;
 
-const Contato = () => {
-  let bgPhoto = useRef(null);
-  let contactMe = useRef(null);
-
-  //GSAP
-  useEffect(() => {
-    TweenMax.fromTo(
-      bgPhoto,
-      0.7,
-      { x: -50, opacity: 0 },
-      { x: 0, delay: 0.7, opacity: 1, ease: Power3.easeIn },
-    );
-    TweenMax.fromTo(
-      contactMe,
-      1.2,
-      { x: -50, opacity: 0 },
-      { x: 0, delay: 0.7, opacity: 1, ease: Power3.easeIn },
-    );
-  }, []); //GSAP
-
-  //Typewriter
+export default function Home() {
+  //TypeWriter Function
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
 
@@ -161,39 +180,27 @@ const Contato = () => {
 
         element.innerHTML = '';
         textArr.forEach((letter, i) => {
-          setTimeout(() => (element.innerHTML += letter), 100 * i);
+          setTimeout(() => (element.innerHTML += letter), 70 * i);
         });
       }
     }
 
     typeWriter(typewriter);
-  }, []); //Typewriter
+  }, []);
 
   return (
     <>
-      <Helmet>
-        <title>Walter Alcantara | Contato</title>
-      </Helmet>
+      <Head>
+        <title>Walter Alcantara</title>
+      </Head>
 
-      <Div>
-        <div className="bg-photo" ref={(el) => (bgPhoto = el)} />
+      <Main>
+        <div className="bg-photo" />
 
-        <h1 className="typewriter-title">contato.</h1>
+        <div className="hello">
+          <h1 className="typewriter-title">Olá, me chamo Walter Alcantara.</h1>
 
-        <div className="contact-me" ref={(el) => (contactMe = el)}>
-          <p>
-            Espero que tenha gostado do meu portfolio, se gostou das minhas
-            habilidades você pode entrar em contato comigo, ficarei feliz em
-            respondê-lo.
-          </p>
-
-          <a
-            className="email"
-            href="mailto:waltermalcantara@gmail.com"
-            title="Envie-me um email"
-          >
-            waltermalcantara@gmail.com
-          </a>
+          <Link href="/sobre">Saiba mais</Link>
 
           <SocialBox>
             <a
@@ -236,17 +243,15 @@ const Contato = () => {
                 <path
                   id="li"
                   d="M459,0H51C22.95,0,0,22.95,0,51v408c0,28.05,22.95,51,51,51h408c28.05,0,51-22.95,51-51V51C510,22.95,487.05,0,459,0z
-                    M153,433.5H76.5V204H153V433.5z M114.75,160.65c-25.5,0-45.9-20.4-45.9-45.9s20.4-45.9,45.9-45.9s45.9,20.4,45.9,45.9
-                    S140.25,160.65,114.75,160.65z M433.5,433.5H357V298.35c0-20.399-17.85-38.25-38.25-38.25s-38.25,17.851-38.25,38.25V433.5H204
-                    V204h76.5v30.6c12.75-20.4,40.8-35.7,63.75-35.7c48.45,0,89.25,40.8,89.25,89.25V433.5z"
+          M153,433.5H76.5V204H153V433.5z M114.75,160.65c-25.5,0-45.9-20.4-45.9-45.9s20.4-45.9,45.9-45.9s45.9,20.4,45.9,45.9
+          S140.25,160.65,114.75,160.65z M433.5,433.5H357V298.35c0-20.399-17.85-38.25-38.25-38.25s-38.25,17.851-38.25,38.25V433.5H204
+          V204h76.5v30.6c12.75-20.4,40.8-35.7,63.75-35.7c48.45,0,89.25,40.8,89.25,89.25V433.5z"
                 />
               </svg>
             </a>
           </SocialBox>
         </div>
-      </Div>
+      </Main>
     </>
   );
-};
-
-export default Contato;
+}

@@ -1,0 +1,38 @@
+:root {
+  --white: #fff;
+  --dark: #000;
+  --secondary-dark: #1d1d1d;
+  --secondary: #682ae9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--dark);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a,
+p,
+span,
+body,
+button {
+  font: 400 1rem 'Roboto Mono', monospace;
+}

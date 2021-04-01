@@ -1,22 +1,23 @@
-//portfolio
+import Head from 'next/head';
+import Link from 'next/link';
 
-import React, { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet';
+import { useEffect, useRef } from 'react';
 import { TweenMax, Power3 } from 'gsap';
 import styled from 'styled-components';
 
-const Div = styled.div`
+import MenuBar from './Nav/MenuBar';
+
+const Main = styled.main`
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 3fr;
 
   .bg-photo {
     grid-column: 1;
     z-index: -1;
-
     display: block;
     position: fixed;
     top: 0;
@@ -41,15 +42,11 @@ const Div = styled.div`
 
     @media (max-width: 768px) {
       top: 50px;
-
       position: relative;
-
       height: 40vh;
       min-height: 200px;
-
       width: 100%;
       min-width: 450px;
-
       background-image: linear-gradient(
           -366deg,
           #000000 20%,
@@ -62,26 +59,21 @@ const Div = styled.div`
   .portfolio {
     grid-column: 2;
     padding: 0.875rem;
-
     & > p {
       color: var(--white);
       width: 100%;
       margin-bottom: 1rem;
     }
-
     .typewriter-title {
       color: var(--white);
       padding: 4rem 0px 2rem 0px;
-
       z-index: 1;
-
       //type animation
       &::after {
         content: '|';
         opacity: 1;
         animation: blink 1s infinite;
       }
-
       @keyframes blink {
         0%,
         100% {
@@ -101,15 +93,12 @@ const Div = styled.div`
       display: flex;
       align-items: center;
       padding: 0.875rem;
-
       .img {
         flex: 0.3;
-
         border: 1px solid var(--secondary);
         border-radius: 3px;
         min-height: 150px;
         min-width: 150px;
-
         background-image: url(./assets/portfolio-img/pomoreact.png);
         background-position: center;
         background-repeat: inherit;
@@ -117,99 +106,61 @@ const Div = styled.div`
 
       .description-box {
         flex: 0.7;
-
         h2 {
           font-size: 2rem;
           color: var(--secondary);
         }
-
         p {
           font-weight: 300;
           margin-bottom: 1rem;
         }
-
         a {
           display: flex;
           align-items: center;
           color: var(--secondary);
           text-decoration: none;
-
           //icon enter into
           & span {
             margin-left: 0.4rem;
-
             svg {
               fill: var(--secondary);
               width: 16px;
             }
           }
-
           &:hover {
             color: var(--white);
-
             svg {
               fill: var(--white);
             }
           }
         }
       }
-
       //space between img and desc-box
       div + div {
         margin-left: 0.875rem;
       }
     }
-
     @media (max-width: 768px) {
       .card {
         .img {
           display: none;
         }
-
         .description-box {
           flex: 1;
         }
       }
     }
   }
-
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-
     .portfolio {
       grid-column: 1;
     }
   }
 `;
 
-const Portfolio = () => {
-  let bgPhoto = useRef(null);
-  let portfDescription = useRef(null);
-  let card = useRef(null);
-
-  //GSAP
-  useEffect(() => {
-    TweenMax.fromTo(
-      bgPhoto,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 1.0, opacity: 1, ease: Power3.easeIn },
-    );
-    TweenMax.fromTo(
-      portfDescription,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 1.3, opacity: 1, ease: Power3.easeIn },
-    );
-    TweenMax.fromTo(
-      card,
-      0.7,
-      { y: -50, opacity: 0 },
-      { y: 0, delay: 1.6, opacity: 1, ease: Power3.easeIn },
-    );
-  }, []); //GSAP
-
-  //Typewriter
+export default function Portfolio() {
+  //TypeWriter Function
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
 
@@ -219,32 +170,34 @@ const Portfolio = () => {
 
         element.innerHTML = '';
         textArr.forEach((letter, i) => {
-          setTimeout(() => (element.innerHTML += letter), 75 * i);
+          setTimeout(() => (element.innerHTML += letter), 70 * i);
         });
       }
     }
 
     typeWriter(typewriter);
-  }, []); //Typewriter
+  }, []);
 
   return (
     <>
-      <Helmet>
-        <title>Walter Alcantara | Portfólio</title>
-      </Helmet>
+      <Head>
+        <title>WA | Portólio</title>
+      </Head>
 
-      <Div>
-        <div className="bg-photo" ref={(el) => (bgPhoto = el)} />
+      <MenuBar />
+
+      <Main>
+        <div className="bg-photo" />
 
         <div className="portfolio">
           <h1 className="typewriter-title">portfólio.</h1>
 
-          <p ref={(el) => (portfDescription = el)}>
+          <p>
             Nesta página contém todos os meus projetos que já dei deploy na web,
             alguns deles são clones, projetos de bootcamp e projetos próprio.
           </p>
 
-          <div className="card" ref={(el) => (card = el)}>
+          <div className="card">
             <div className="img" />
             <div className="description-box">
               <h2>Pomo.react</h2>
@@ -277,9 +230,7 @@ v-382.5C612,72.503,577.747,38.25,535.5,38.25z"
             </div>
           </div>
         </div>
-      </Div>
+      </Main>
     </>
   );
-};
-
-export default Portfolio;
+}
