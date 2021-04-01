@@ -1,17 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-
-import '../../global.css';
+import Link from 'next/link';
 
 const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
   text-align: center;
+  padding: 0.875rem;
+  margin: 0px;
 
   li {
-    padding: 1rem;
+    padding: 0.875rem;
     text-transform: lowercase;
 
     a {
@@ -26,46 +25,60 @@ const Ul = styled.ul`
     }
 
     @media (max-width: 768px) {
-      &::after {
+      padding: 0rem;
+
+      &:nth-child(1)::after,
+      &:nth-child(2)::after,
+      &:nth-child(3)::after {
         content: '';
-        margin-top: 1rem;
         display: block;
         width: 100%;
         height: 2px;
         background: var(--secondary);
+        margin: 1rem 0 1rem 0;
       }
     }
   }
 
+  li:nth-child(1) {
+    @media (max-width: 768px) {
+      margin-top: 3rem;
+    }
+  }
+
   @media (max-width: 768px) {
-    flex-flow: column nowrap;
+    flex-direction: column;
     background: var(--secondary-dark);
     position: fixed;
+
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
     top: 0;
     right: 0;
     height: 100vh;
     width: 200px;
     transition: transform 0.3s ease-in-out;
-    padding-top: 4rem;
+    padding-top: 1rem;
     border-left: 1px solid rgba(255, 255, 255, 0.15);
   }
 `;
 
-const RightNav = ({ open }) => {
+export default function RightNav({ open }) {
   return (
-    <Ul open={open}>
-      <li>
-        <Link to="/sobremim">Sobre mim</Link>
-      </li>
-      <li>
-        <Link to="/portfolio">Portfólio</Link>
-      </li>
-      <li>
-        <Link to="/contato">Contato</Link>
-      </li>
-    </Ul>
+    <>
+      <Ul open={open}>
+        <li>
+          <Link href="/">Inicio</Link>
+        </li>
+        <li>
+          <Link href="./sobre">Sobre mim</Link>
+        </li>
+        <li>
+          <Link href="./portfolio">Portfólio</Link>
+        </li>
+        <li>
+          <Link href="./contato">Contato</Link>
+        </li>
+      </Ul>
+    </>
   );
-};
-
-export default RightNav;
+}

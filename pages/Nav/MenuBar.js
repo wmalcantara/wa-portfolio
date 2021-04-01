@@ -1,56 +1,50 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Burger from './Burger.js';
-
-import RightNav from './RightNav.js';
+import Link from 'next/link';
+import Burger from './Burger';
+import RightNav from './RightNav';
 
 const Nav = styled.nav`
   width: 100%;
   height: 55px;
   background: var(--secondary-dark);
-
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-
   position: fixed;
-  z-index: 999;
+  z-index: 100;
 
   .logo {
     path {
       animation: animateLogo 6s ease infinite alternate;
       stroke: var(--secondary);
     }
-
     @keyframes animateLogo {
       0% {
-        stroke-width: 0.1;
+        stroke-width: 0;
         stroke-dasharray: 1 100;
         fill: transparent;
       }
       25% {
-        stroke-width: 0.5;
+        stroke-width: 1;
         fill: transparent;
-        stroke-dasharray: 100 1;
+        stroke-dasharray: 100 0;
       }
       60%,
       100% {
-        stroke-width: 1;
-        stroke: var(--secondary);
+        stroke-width: 0.5;
+        fill: var(--secondary);
       }
     }
   }
 `;
 
-const MenuBar = () => {
+export default function MenuBar() {
   return (
-    <Nav>
-      <div className="logo">
-        <Link to="/">
+    <>
+      <Nav>
+        <div className="logo">
           <svg width="50" height="35" viewBox="0 0 50 35" fill="none">
             <path
               d="M39.3962 21.9631H34.6686L33.0928 27.5186H41.0522L39.3962 21.9631Z"
@@ -65,12 +59,10 @@ const MenuBar = () => {
               fill="none"
             />
           </svg>
-        </Link>
-      </div>
+        </div>
 
-      <Burger />
-    </Nav>
+        <Burger />
+      </Nav>
+    </>
   );
-};
-
-export default MenuBar;
+}
