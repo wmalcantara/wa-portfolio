@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import styled from 'styled-components';
 import Home from './home';
 import MenuBar from './Nav/MenuBar';
 

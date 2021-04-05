@@ -113,6 +113,7 @@ const SocialBox = styled.div`
 `;
 
 export default function Contato() {
+  //Typewriting effect
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
 

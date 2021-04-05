@@ -1,8 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-
 import { useEffect, useRef } from 'react';
-import { TweenMax, Power3 } from 'gsap';
 import styled from 'styled-components';
 
 import MenuBar from './Nav/MenuBar';
@@ -167,6 +165,7 @@ const Main = styled.main`
 `;
 
 export default function Portfolio() {
+  //Typewriting effect
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
 
