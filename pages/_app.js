@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background: var(--dark);
+
   }
 
   img,

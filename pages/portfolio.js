@@ -1,81 +1,31 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+
 import styled from 'styled-components';
 
 import MenuBar from './Nav/MenuBar';
 
 import portfolios from '../portfolios.json';
 
-const Main = styled.main`
+const Main = styled.div`
   width: 100%;
   max-width: 960px;
   margin: 0 auto;
 
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-
-  .bg-photo {
-    grid-column: 1;
-    z-index: -1;
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70%;
-    height: 100%;
-    max-width: 960px;
-    background-image: radial-gradient(
-        60% 60% at 25% 65%,
-        rgba(0, 0, 0, 0.25) 75%,
-        #000000 100%
-      ),
-      radial-gradient(
-        134% 277% at 20% 58%,
-        rgba(0, 0, 0, 0.15) 81%,
-        #000000 95%
-      ),
-      url(./assets/img/code-2.jpg);
-    background-repeat: no-repeat;
-    background-position: 50%;
-    background-size: cover;
-
-    @media (max-width: 768px) {
-      top: 50px;
-      position: relative;
-      height: 40vh;
-      min-height: 200px;
-      width: 100%;
-      min-width: 450px;
-      background-image: linear-gradient(
-          -366deg,
-          #000000 20%,
-          rgba(0, 0, 0, 0.05) 55%
-        ),
-        url(./assets/img/code-2.jpg);
-    }
-  }
-
   .portfolio {
-    grid-column: 2;
-    padding: 0.875rem;
-
-    & > p {
-      color: var(--white);
-      width: 100%;
-      margin-bottom: 1rem;
-    }
+    color: var(--white);
+    padding: 75px 0.875rem;
 
     .typewriter-title {
-      color: var(--white);
-      padding: 4rem 0px 2rem 0px;
       z-index: 1;
-      //type animation
+      color: var(--white);
+
       &::after {
         content: '|';
         opacity: 1;
         animation: blink 1s infinite;
       }
+
       @keyframes blink {
         0%,
         100% {
@@ -84,7 +34,7 @@ const Main = styled.main`
         50% {
           opacity: 0;
         }
-      } //type animation
+      }
     }
 
     .card {
@@ -95,7 +45,7 @@ const Main = styled.main`
       display: flex;
       align-items: center;
       padding: 0.875rem;
-      margin-bottom: 1rem;
+      margin: 1rem 0 1rem 0;
 
       .img {
         flex: 0.3;
@@ -141,13 +91,12 @@ const Main = styled.main`
           }
         }
       }
-    }
 
-    @media (max-width: 768px) {
-      .card {
+      @media (max-width: 768px) {
         .img {
           display: none;
         }
+
         .description-box {
           flex: 1;
         }
@@ -156,15 +105,42 @@ const Main = styled.main`
   }
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-
-    .portfolio {
-      grid-column: 1;
-    }
+    display: flex;
+    flex-direction: column;
   }
 `;
 
-export default function Portfolio() {
+const SocialBox = styled.div`
+  display: flex;
+  width: 90px;
+  margin-top: 1rem;
+
+  a {
+    fill: var(--secondary);
+  }
+
+  a + a {
+    margin-left: 1rem;
+  }
+
+  svg {
+    height: 40px;
+    cursor: pointer;
+    transition: 0.7s ease;
+    fill: var(--secondary);
+    & path {
+      transition: 0.7s ease;
+    }
+    &:hover {
+      transform: translate3d(0, -3px, 0);
+    }
+    &:hover path {
+      fill: var(--white);
+    }
+  } //svg
+`;
+
+export default function Contato() {
   //Typewriting effect
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
@@ -185,11 +161,11 @@ export default function Portfolio() {
 
   return (
     <>
-      <Head>
-        <title>WA | Portólio</title>
-      </Head>
-
       <MenuBar />
+      <Head>
+        <title>WA | Portfólio</title>
+        <link rel="icon" type="image/png" href="/assets/favicon.ico" />
+      </Head>
 
       <Main>
         <div className="bg-photo" />

@@ -136,6 +136,7 @@ export default function Contato() {
       <MenuBar />
       <Head>
         <title>WA | Contato</title>
+        <link rel="icon" type="image/png" href="/assets/favicon.ico" />
       </Head>
 
       <Main>

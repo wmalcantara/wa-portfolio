@@ -24,13 +24,7 @@ const Main = styled.main`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    background-image: linear-gradient(
-        274deg,
-        #000000 5%,
-        rgba(0, 0, 0, 0.05) 26%
-      ),
-      linear-gradient(96deg, #000000 28%, rgba(0, 0, 0, 0.05) 46%),
-      url(./assets/img/walter-background.png);
+    background-image: url(./assets/img/home-background.png);
 
     @media (max-width: 768px) {
       top: auto;
@@ -44,7 +38,7 @@ const Main = styled.main`
           rgba(0, 0, 0, 0) 53%,
           #000000 100%
         ),
-        url(./assets/img/walter-background.png);
+        url(./assets/img/home-background-mobile.png);
     }
   }
 

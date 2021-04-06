@@ -38,5 +38,13 @@
   {
     "img": "./assets/icons/techs/GSAP.png",
     "name": "GSAP"
+  },
+  {
+    "img": "./assets/icons/techs/next-js.png",
+    "name": "Next.js"
+  },
+  {
+    "img": "./assets/icons/techs/framer-motion.png",
+    "name": "Framer Motion"
   }
 ]

@@ -18,40 +18,22 @@ const Main = styled.main`
 
   .bg-photo {
     grid-column: 1;
-    display: block;
     position: fixed;
     top: 0;
     left: 0;
     width: 70%;
     height: 100%;
     max-width: 960px;
-    background-image: radial-gradient(
-        60% 60% at 25% 65%,
-        rgba(0, 0, 0, 0.25) 75%,
-        #000000 100%
-      ),
-      radial-gradient(
-        134% 277% at 20% 58%,
-        rgba(0, 0, 0, 0.15) 81%,
-        #000000 95%
-      ),
-      url(./assets/img/walter-background2.png);
+    background-image: url(./assets/img/about-background.png);
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+
     @media (max-width: 768px) {
-      top: 50px;
       position: relative;
-      height: 40vh;
-      min-height: 200px;
+      height: 60vh;
       width: 100%;
-      min-width: 450px;
-      background-image: linear-gradient(
-          -366deg,
-          #000000 20%,
-          rgba(0, 0, 0, 0.05) 55%
-        ),
-        url(./assets/img/walter-background2.png);
+      background-image: url(./assets/img/about-background-mobile.png);
     }
   }
 
