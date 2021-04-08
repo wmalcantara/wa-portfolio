@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import MenuBar from './Nav/MenuBar';
@@ -316,11 +316,13 @@ export default function Sobre() {
             <p>Algumas tecnologias que utilizo e estudo no momento.</p>
 
             <section>
-              {techs.map((tech) => {
+              {techs.map((tech, index) => {
                 return (
-                  <div key={tech.name}>
-                    <img src={tech.img} alt={tech.name} />
-                  </div>
+                  <>
+                    <div key={index}>
+                      <img src={tech.img} alt={tech.name} />
+                    </div>
+                  </>
                 );
               })}
             </section>

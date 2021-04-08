@@ -1,17 +1,21 @@
 [
   {
+    "id": "html",
     "img": "./assets/icons/techs/html.png",
     "name": "HTML"
   },
   {
+    "id": "css",
     "img": "./assets/icons/techs/css.png",
     "name": "CSS"
   },
   {
+    "id": "javascript",
     "img": "./assets/icons/techs/javascript.png",
     "name": "JavaScript"
   },
   {
+    "id": "bootstrap",
     "img": "./assets/icons/techs/bootstrap.png",
     "name": "Bootstrap"
   },
