@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import MenuBar from './Nav/MenuBar';
 
@@ -140,6 +141,44 @@ const SocialBox = styled.div`
   } //svg
 `;
 
+const variants = {
+  pageDescription: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.8,
+      },
+    },
+  },
+
+  card: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.3,
+      },
+    },
+  },
+
+  onHovering: {
+    scale: 1.1,
+    y: -5,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
+
 export default function Contato() {
   //Typewriting effect
   useEffect(() => {
@@ -168,21 +207,28 @@ export default function Contato() {
       </Head>
 
       <Main>
-        <div className="bg-photo" />
-
         <div className="portfolio">
           <h1 className="typewriter-title">portfólio.</h1>
 
-          <p>
+          <motion.p
+            initial="hidden"
+            animate="visible"
+            variants={variants.pageDescription}
+          >
             Nesta página contém todos os meus projetos que já dei deploy na web,
             alguns deles são clones, projetos de bootcamp e projetos próprio.
-          </p>
+          </motion.p>
 
           {portfolios.map((portfolio) => {
             console.log(portfolio.name);
             return (
               <>
-                <div className="card">
+                <motion.div
+                  className="card"
+                  initial="hidden"
+                  animate="visible"
+                  variants={variants.card}
+                >
                   <img
                     className="img"
                     src={portfolio.img}
@@ -208,7 +254,7 @@ v-382.5C612,72.503,577.747,38.25,535.5,38.25z"
                       </span>
                     </a>
                   </div>
-                </div>
+                </motion.div>
               </>
             );
           })}
