@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import MenuBar from './Nav/MenuBar';
 
@@ -61,12 +62,35 @@ const Main = styled.div`
     color: var(--white);
     width: 100%;
     position: relative;
+
     p {
       margin-bottom: 1rem;
     }
+
     .email {
       color: var(--secondary);
     }
+
+    .socialBox {
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+
+      svg {
+        height: 40px;
+        transition: 0.7s ease;
+        fill: var(--secondary);
+      }
+
+      a + a {
+        margin-left: 1rem;
+      }
+
+      svg:hover {
+        fill: var(--white);
+      }
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 3.5rem;
@@ -85,32 +109,45 @@ const Main = styled.div`
   }
 `;
 
-const SocialBox = styled.div`
-  display: flex;
-  width: 90px;
-  margin-top: 1rem;
-  a {
-    fill: var(--secondary);
-  }
-  a + a {
-    margin-left: 1rem;
-  }
-  svg {
-    height: 40px;
-    cursor: pointer;
-    transition: 0.7s ease;
-    fill: var(--secondary);
-    & path {
-      transition: 0.7s ease;
-    }
-    &:hover {
-      transform: translate3d(0, -3px, 0);
-    }
-    &:hover path {
-      fill: var(--white);
-    }
-  } //svg
-`;
+const SocialBox = styled.div``;
+
+const variants = {
+  bgPhoto: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.8,
+      },
+    },
+  },
+
+  contactBox: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.3,
+      },
+    },
+  },
+
+  onHovering: {
+    scale: 1.1,
+    y: -5,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
 
 export default function Contato() {
   //Typewriting effect
@@ -140,11 +177,21 @@ export default function Contato() {
       </Head>
 
       <Main>
-        <div className="bg-photo" />
+        <motion.div
+          className="bg-photo"
+          initial="hidden"
+          animate="visible"
+          variants={variants.bgPhoto}
+        />
 
         <h1 className="typewriter-title">contato.</h1>
 
-        <div className="contact-me">
+        <motion.div
+          className="contact-me"
+          initial="hidden"
+          animate="visible"
+          variants={variants.contactBox}
+        >
           <p>
             Espero que tenha gostado do meu portfolio, se gostou das minhas
             habilidades você pode entrar em contato comigo, ficarei feliz em
@@ -159,11 +206,12 @@ export default function Contato() {
             waltermalcantara@gmail.com
           </a>
 
-          <SocialBox>
-            <a
+          <div className="socialBox">
+            <motion.a
               href="https://www.github.com/wmalcantara"
               rel="noreferrer"
               target="_blank"
+              whileHover={variants.onHovering}
             >
               <svg viewBox="0 0 438.549 438.549">
                 <path
@@ -189,12 +237,13 @@ export default function Contato() {
     C438.536,184.851,428.728,148.168,409.132,114.573z"
                 />
               </svg>
-            </a>
+            </motion.a>
 
-            <a
+            <motion.a
               href="https://www.linkedin.com/in/walteralcantara"
               rel="noreferrer"
               target="_blank"
+              whileHover={variants.onHovering}
             >
               <svg viewBox="0 0 510 510">
                 <path
@@ -205,9 +254,9 @@ export default function Contato() {
             V204h76.5v30.6c12.75-20.4,40.8-35.7,63.75-35.7c48.45,0,89.25,40.8,89.25,89.25V433.5z"
                 />
               </svg>
-            </a>
-          </SocialBox>
-        </div>
+            </motion.a>
+          </div>
+        </motion.div>
       </Main>
     </>
   );
