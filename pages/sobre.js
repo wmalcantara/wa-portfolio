@@ -73,6 +73,7 @@ const Main = styled.main`
       color: var(--white);
       width: 100%;
       position: relative;
+
       .first-folder {
         display: flex;
         align-items: center;
@@ -117,6 +118,7 @@ const Main = styled.main`
         @media (max-width: 768px) {
         }
       }
+
       .social-box {
         display: flex;
         margin-bottom: -3rem;
@@ -140,12 +142,24 @@ const Main = styled.main`
           margin-left: 1rem;
         }
       }
+
       .second-folder {
         margin-top: 0.875rem;
         //space between every p
         p + p {
           margin-top: 0.875rem;
         }
+      }
+    }
+    .experience-jobs {
+      color: var(--white);
+
+      strong {
+        font-weight: 700;
+      }
+      a {
+        color: inherit;
+        text-decoration: underline;
       }
     }
     .tech-list,
@@ -303,15 +317,30 @@ export default function Sobre() {
               </p>
               <p>
                 Olá, meu nome é Walter Alcantara, tenho 23 anos, sou casado e me
-                considero como um entusiasta e um apaixonado por tecnologia. Amo
+                considero um entusiasta e um apaixonado por tecnologia. Amo
                 aprender uma nova tecnologia, explorar e descobrir como é
                 possível aplicar.
               </p>
             </div>
           </div>
 
+          <div className="experience-jobs">
+            <h2>experiência</h2>
+            <br />
+
+            <strong style={{ color: 'var(--secondary)' }}>
+              Estagiário Front-end
+            </strong>
+            <br />
+            <a href="https://enext.com.br" target="_blank">
+              @Enext
+            </a>
+            <p>03/2021 - Atualmente.</p>
+          </div>
+
           <div className="tech-list">
             <h2>habilidades</h2>
+            <br />
 
             <p>Algumas tecnologias que utilizo e estudo no momento.</p>
 
@@ -330,6 +359,7 @@ export default function Sobre() {
 
           <div className="tool-list">
             <h2>ferramentas</h2>
+            <br />
 
             <p>Algumas ferramentas que me auxiliam no desenvolvimento.</p>
 
