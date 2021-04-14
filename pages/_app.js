@@ -28,12 +28,16 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
   }
-
+  
+  b,
+  strong,
   a,
   p,
   span,
   body,
   button {
+    margin: 0;
+    padding: 0;
     font: 400 1rem 'Roboto Mono', monospace;
   }
 `;
