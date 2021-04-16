@@ -50,5 +50,9 @@
   {
     "img": "./assets/icons/techs/framer-motion.png",
     "name": "Framer Motion"
+  },
+  {
+    "img": "./assets/icons/techs/jquery.png",
+    "name": "jQuery"
   }
 ]

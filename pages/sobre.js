@@ -349,7 +349,7 @@ export default function Sobre() {
                 return (
                   <>
                     <div key={index}>
-                      <img src={tech.img} alt={tech.name} />
+                      <img src={tech.img} alt={tech.name} title={tech.name} />
                     </div>
                   </>
                 );
@@ -367,7 +367,7 @@ export default function Sobre() {
               {tools.map((tool) => {
                 return (
                   <div key={tool.name}>
-                    <img src={tool.img} alt={tool.name} />
+                    <img src={tool.img} alt={tool.name} title={tool.name} />
                   </div>
                 );
               })}
