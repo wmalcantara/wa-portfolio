@@ -1,10 +1,9 @@
-import Head from 'next/head';
-import { useEffect } from 'react';
+import Head from './Components/Head';
+import MenuBar from './Nav/MenuBar';
 
+import { useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-
-import MenuBar from './Nav/MenuBar';
 
 import portfolios from '../portfolios.json';
 
@@ -180,6 +179,7 @@ const variants = {
 };
 
 export default function Contato() {
+  
   //Typewriting effect
   useEffect(() => {
     const typewriter = document.querySelector('.typewriter-title');
@@ -201,14 +201,15 @@ export default function Contato() {
   return (
     <>
       <MenuBar />
-      <Head>
-        <title>WA | Portfólio</title>
-        <link rel="icon" type="image/png" href="/assets/favicon.ico" />
-      </Head>
+      
+      <Head title="WA | Portfólio" />
+
 
       <Main>
         <div className="portfolio">
           <h1 className="typewriter-title">portfólio.</h1>
+
+          <br/>
 
           <motion.p
             initial="hidden"
@@ -234,6 +235,7 @@ export default function Contato() {
                     src={portfolio.img}
                     alt={portfolio.name}
                   />
+
                   <div className="description-box">
                     <h2>{portfolio.name}</h2>
                     <p>{portfolio.description}</p>
@@ -243,12 +245,12 @@ export default function Contato() {
                         <svg viewBox="0 0 612 612">
                           <path
                             d="M331.685,425.378c-7.478,7.479-7.478,19.584,0,27.043c7.479,7.478,19.584,7.478,27.043,0l131.943-131.962
-c3.979-3.979,5.681-9.276,5.412-14.479c0.269-5.221-1.434-10.499-5.412-14.477L358.728,159.56
-c-7.459-7.478-19.584-7.478-27.043,0c-7.478,7.478-7.478,19.584,0,27.042l100.272,100.272H19.125C8.568,286.875,0,295.443,0,306
-c0,10.557,8.568,19.125,19.125,19.125h412.832L331.685,425.378z M535.5,38.25H153c-42.247,0-76.5,34.253-76.5,76.5v76.5h38.25
-v-76.5c0-21.114,17.117-38.25,38.25-38.25h382.5c21.133,0,38.25,17.136,38.25,38.25v382.5c0,21.114-17.117,38.25-38.25,38.25H153
-c-21.133,0-38.25-17.117-38.25-38.25v-76.5H76.5v76.5c0,42.247,34.253,76.5,76.5,76.5h382.5c42.247,0,76.5-34.253,76.5-76.5
-v-382.5C612,72.503,577.747,38.25,535.5,38.25z"
+                              c3.979-3.979,5.681-9.276,5.412-14.479c0.269-5.221-1.434-10.499-5.412-14.477L358.728,159.56
+                              c-7.459-7.478-19.584-7.478-27.043,0c-7.478,7.478-7.478,19.584,0,27.042l100.272,100.272H19.125C8.568,286.875,0,295.443,0,306
+                              c0,10.557,8.568,19.125,19.125,19.125h412.832L331.685,425.378z M535.5,38.25H153c-42.247,0-76.5,34.253-76.5,76.5v76.5h38.25
+                              v-76.5c0-21.114,17.117-38.25,38.25-38.25h382.5c21.133,0,38.25,17.136,38.25,38.25v382.5c0,21.114-17.117,38.25-38.25,38.25H153
+                              c-21.133,0-38.25-17.117-38.25-38.25v-76.5H76.5v76.5c0,42.247,34.253,76.5,76.5,76.5h382.5c42.247,0,76.5-34.253,76.5-76.5
+                              v-382.5C612,72.503,577.747,38.25,535.5,38.25z"
                           />
                         </svg>
                       </span>
