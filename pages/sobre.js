@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 import MenuBar from './Nav/MenuBar';
 
@@ -208,6 +209,103 @@ const Main = styled.main`
   }
 `;
 
+const variants = {
+  bgPhoto: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.9,
+      },
+    },
+  },
+
+  aboutMe: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.2,
+      },
+    },
+  },
+
+  experienceJobs: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.5,
+      },
+    },
+  },
+
+  techContainer: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 1.8,
+        delayChildren: 2,
+        staggerChildren: 0.1,
+      },
+    },
+    techItem: {
+      hidden: { y: -20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+      },
+    },
+  },
+
+  toolContainer: {
+    hidden: {
+      opacity: 0,
+      y: -20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 3.1,
+        delayChildren: 3.3,
+        staggerChildren: 0.1,
+      },
+    },
+    toolItem: {
+      hidden: { y: -20, opacity: 0 },
+      visible: {
+        y: 0,
+        opacity: 1,
+      },
+    },
+  },
+
+  onHovering: {
+    scale: 1.1,
+    transition: {
+      duration: 0.1,
+    },
+  },
+};
+
 export default function Sobre() {
   //Typewriting effect
   useEffect(() => {
@@ -231,17 +329,28 @@ export default function Sobre() {
     <>
       <Head>
         <title>WA | Sobre</title>
+        <link rel="icon" type="image/png" href="/assets/favicon.ico" />
       </Head>
 
       <MenuBar />
 
       <Main>
-        <div className="bg-photo" />
+        <motion.div
+          className="bg-photo"
+          initial="hidden"
+          animate="visible"
+          variants={variants.bgPhoto}
+        />
 
         <div className="infos">
           <h1 className="typewriter-title">sobre mim.</h1>
 
-          <div className="about-me">
+          <motion.div
+            className="about-me"
+            initial="hidden"
+            animate="visible"
+            variants={variants.aboutMe}
+          >
             <div className="social-box">
               <a
                 href="https://www.github.com/wmalcantara"
@@ -322,9 +431,14 @@ export default function Sobre() {
                 possível aplicar.
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="experience-jobs">
+          <motion.div
+            className="experience-jobs"
+            initial="hidden"
+            animate="visible"
+            variants={variants.experienceJobs}
+          >
             <h2>experiência</h2>
             <br />
 
@@ -336,9 +450,14 @@ export default function Sobre() {
               @Enext
             </a>
             <p>03/2021 - Atualmente.</p>
-          </div>
+          </motion.div>
 
-          <div className="tech-list">
+          <motion.div
+            className="tech-list"
+            variants={variants.techContainer}
+            initial="hidden"
+            animate="visible"
+          >
             <h2>habilidades</h2>
             <br />
 
@@ -348,16 +467,25 @@ export default function Sobre() {
               {techs.map((tech, index) => {
                 return (
                   <>
-                    <div key={index}>
+                    <motion.div
+                      key={index}
+                      variants={variants.techContainer.techItem}
+                      whileHover={variants.onHovering}
+                    >
                       <img src={tech.img} alt={tech.name} title={tech.name} />
-                    </div>
+                    </motion.div>
                   </>
                 );
               })}
             </section>
-          </div>
+          </motion.div>
 
-          <div className="tool-list">
+          <motion.div
+            className="tool-list"
+            variants={variants.toolContainer}
+            initial="hidden"
+            animate="visible"
+          >
             <h2>ferramentas</h2>
             <br />
 
@@ -366,13 +494,17 @@ export default function Sobre() {
             <section>
               {tools.map((tool) => {
                 return (
-                  <div key={tool.name}>
+                  <motion.div
+                    key={tool.name}
+                    variants={variants.toolContainer.toolItem}
+                    whileHover={variants.onHovering}
+                  >
                     <img src={tool.img} alt={tool.name} title={tool.name} />
-                  </div>
+                  </motion.div>
                 );
               })}
             </section>
-          </div>
+          </motion.div>
         </div>
       </Main>
     </>
