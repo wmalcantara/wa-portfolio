@@ -31,6 +31,7 @@ This project was developed using the following technologies:
 - [Next.js](https://nextjs.org/)
 - [React](https://reactjs.org)
 - [Framer Motion](https://www.framer.com/motion/)
+- [Styled Components](https://styled-components.com)
 
 ## Author
 
