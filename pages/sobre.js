@@ -352,7 +352,7 @@ export default function Sobre() {
             <div className="first-folder">
               <p>Faça o download do meu</p>
               <button type="button">
-                <a href="./Resume.pdf" download="Resume.pdf">
+                <a href="https://drive.google.com/file/d/18YxTgpMd6QbrMk-CNZBwicaZ1r83uwxa/view" target="_blank">
                   currículo
                   <span>
                     <svg viewBox="0 0 512 512">
