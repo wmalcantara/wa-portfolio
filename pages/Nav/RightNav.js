@@ -1,5 +1,7 @@
+import {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import cx from 'classnames';
 
 const Ul = styled.ul`
   list-style: none;
@@ -12,6 +14,17 @@ const Ul = styled.ul`
   li {
     padding: 0.875rem;
     text-transform: lowercase;
+
+    &.selected {
+        &:after{
+        content: '';
+        display: flex;
+        width: 100%;
+        height: 1px;
+        background: var(--secondary);
+        margin: 0 auto;
+      }
+    }
 
     a {
       text-decoration: none;
@@ -63,19 +76,34 @@ const Ul = styled.ul`
 `;
 
 export default function RightNav({ open }) {
+  const [path, setPath] = useState('');
+
+  useEffect(() => {
+    const thisPath = window.location.pathname;
+    setPath(thisPath)
+  },[])
+
   return (
     <>
       <Ul open={open}>
-        <li>
+        <li className={cx(
+          {selected: path === '/'}
+          )}>
           <Link href="/">Inicio</Link>
         </li>
-        <li>
+        <li className={cx(
+          {selected: path === '/sobre'}
+          )}>
           <Link href="./sobre">Sobre mim</Link>
         </li>
-        <li>
+        <li className={cx(
+          {selected: path === '/portfolio'}
+          )}>
           <Link href="./portfolio">Portfólio</Link>
         </li>
-        <li>
+        <li className={cx(
+          {selected: path === '/contato'}
+          )}>
           <Link href="./contato">Contato</Link>
         </li>
       </Ul>
