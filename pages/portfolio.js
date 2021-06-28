@@ -5,9 +5,6 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-import techs from '../techs.json';
-
-
 import portfolios from '../portfolios.json';
 
 const Main = styled.div`

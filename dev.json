@@ -1,0 +1,104 @@
+{
+  "techs": [
+    {
+      "id": "html",
+      "img": "./assets/icons/techs/html.png",
+      "name": "HTML",
+      "description": "HyperText Markup Language, é uma linguagem de marcação utilizada na construção de páginas na Web."
+    },
+    {
+      "id": "css",
+      "img": "./assets/icons/techs/css.png",
+      "name": "CSS",
+      "description": "Cascading Style Sheets, é um mecanismo para adicionar estilo a um documento web."
+    },
+    {
+      "id": "javascript",
+      "img": "./assets/icons/techs/javascript.png",
+      "name": "JavaScript",
+      "description": "JavaScript é uma linguagem de programação, interpretada e baseada em objetos com funções de primeira classe, mais conhecida como a linguagem de script para páginas Web."
+    },
+    {
+      "id": "bootstrap",
+      "img": "./assets/icons/techs/bootstrap.png",
+      "name": "Bootstrap",
+      "description": "Bootstrap é um framework CSS para desenvolvimento de componentes de interface e front-end para sites e aplicações web."
+    },
+    {
+      "img": "./assets/icons/techs/git.png",
+      "name": "Git",
+      "description": "Git é um sistema de controle de versões distribuído, usado principalmente no desenvolvimento de software."
+    },
+    {
+      "img": "./assets/icons/techs/react.png",
+      "name": "ReactJS",
+      "description": "React é uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web. "
+    },
+    {
+      "img": "./assets/icons/techs/typescript.png",
+      "name": "TypeScript",
+      "description": "TypeScript é um superconjunto de JavaScript desenvolvido pela Microsoft que adiciona tipagem e alguns outros recursos a linguagem."
+    },
+    {
+      "img": "./assets/icons/techs/sass.png",
+      "name": "SASS",
+      "description": "Syntactically Awesome Style Sheets, é uma linguagem de estilo e script que é interpretada ou compilada em CSS."
+    },
+    {
+      "img": "./assets/icons/techs/styled-components.png",
+      "name": "Styled Components",
+      "description": "Styled Components, é uma ferramenta CSS em JS, que preenche a lacuna entre componentes e estilização."
+    },
+    {
+      "img": "./assets/icons/techs/GSAP.png",
+      "name": "GSAP",
+      "description": "GreenSock Animation Platform, é uma biblioteca de animações JavaScript."
+    },
+    {
+      "img": "./assets/icons/techs/next-js.png",
+      "name": "Next.js",
+      "description": "Next.js é um framework que permite funcionalidades como SSR e SSG para aplicativos da web baseados em React."
+    },
+    {
+      "img": "./assets/icons/techs/framer-motion.png",
+      "name": "Framer Motion",
+      "description": "Framer Motion, é uma biblioteca de animação para React."
+    },
+    {
+      "img": "./assets/icons/techs/jquery.png",
+      "name": "jQuery",
+      "description": "jQuery, é uma biblioteca de funções JavaScript desenvolvida para simplificar os scripts."
+    }
+  ],
+
+  "tools": [
+    {
+      "img": "./assets/icons/tools/adobexd.png",
+      "name": "Adobe XD"
+    },
+    {
+      "img": "./assets/icons/tools/figma.png",
+      "name": "Figma"
+    },
+    {
+      "img": "./assets/icons/tools/linux.png",
+      "name": "Linux"
+    },
+    {
+      "img": "./assets/icons/tools/photoshop.png",
+      "name": "Photoshop"
+    },
+    {
+      "img": "./assets/icons/tools/terminal.png",
+      "name": "Terminal"
+    },
+    {
+      "img": "./assets/icons/tools/npm.png",
+      "name": "NPM"
+    },
+    {
+      "img": "./assets/icons/tools/yarn.png",
+      "name": "Yarn"
+    }
+  ]
+}
