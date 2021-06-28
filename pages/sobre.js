@@ -1,15 +1,17 @@
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+
 import Head from './Components/Head';
+import { Modal } from './Components/Modal';
 import SocialNetworkComponent from './Components/SocialNetwork';
 import MenuBar from './Nav/MenuBar';
 
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useContextAPI } from '../src/hooks/useContextAPI';
+
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
-
-import techs from '../techs.json';
-import tools from '../tools.json';
+import { techs, tools } from '../dev.json';
 
 const Main = styled.main`
   width: 100%;
@@ -296,6 +298,9 @@ const variants = {
 };
 
 export default function Sobre() {
+  const { setIsModalOpen } = useContextAPI();
+
+  const [tech, setTech] = useState({});
 
   //Typewriting effect
   useEffect(() => {
@@ -315,16 +320,20 @@ export default function Sobre() {
     typeWriter(typewriter);
   }, []);
 
-  function handleClick(){
-    console.log('clicou');
+  function handleClick(tech){
+    setTech({
+      img: tech.img,
+      name: tech.name,
+      description: tech.description
+    })
+    setIsModalOpen(true);
   }
 
   return (
     <>
-
       <Head title="WA | Sobre" />
       <MenuBar />
-
+<downloadIcon />
       <Main>
 
         <motion.div
@@ -348,7 +357,8 @@ export default function Sobre() {
             <div className="social-box">
               <SocialNetworkComponent />
             </div>
-
+            
+           
             <div className="first-folder">
               <p>Faça o download do meu</p>
               <button type="button">
@@ -358,9 +368,8 @@ export default function Sobre() {
                     <svg viewBox="0 0 512 512">
                       <path
                         d="M472,313v139c0,11.028-8.972,20-20,20H60c-11.028,0-20-8.972-20-20V313H0v139c0,33.084,26.916,60,60,60h392
-              c33.084,0,60-26.916,60-60V313H472z"
+                          c33.084,0,60-26.916,60-60V313H472z"
                       />
-
                       <polygon points="352,235.716 276,311.716 276,0 236,0 236,311.716 160,235.716 131.716,264 256,388.284 380.284,264 		" />
                     </svg>
                   </span>
@@ -422,7 +431,7 @@ export default function Sobre() {
                       key={index}
                       variants={variants.techContainer.techItem}
                       whileHover={variants.onHovering}
-                      onClick={handleClick}
+                      onClick={() => handleClick(tech)}
                     >
                       <img src={tech.img} alt={tech.name} title={tech.name} />
                     </motion.div>
@@ -460,6 +469,8 @@ export default function Sobre() {
 
           </motion.div>
 
+          <Modal props={tech} />
+        
         </div>
       </Main>
     </>
