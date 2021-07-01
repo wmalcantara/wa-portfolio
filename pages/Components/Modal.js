@@ -1,66 +1,49 @@
 
 import styled, { css } from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import cx from 'classnames';
 
+import Overlay from './Overlay';
 import CloseIcon from '../../public/assets/icons/closeIcon.svg';
 
 import { useContextAPI } from '../../src/hooks/useContextAPI';
 
-const variants = {
-    modal: {
-      hidden: {
-        opacity: 0,
-        y: -20,
-      },
-      visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: 0.9,
-        },
-      },
-    },
-  };
-
 const ModalContainer = styled.div`
 
-    display: none;
-    opacity: 0;
-    
-    position: fixed;
+    display: ${({ isModalOpen }) => (isModalOpen ? 'block' : 'none')};
+    animation: show .3s forwards;
 
+    @keyframes show {
+        from { opacity: 0; transform: translateY(-50px); }
+        to { opacity: 1; transform: translateY(50px); }
+    }
+
+    position: fixed;
     width:300px;
     height:auto;
     left: 50%;
     top: 25%; 
-    
+    z-index:100;
     margin-left: -150px;
 
     background: #1D1D1D;
     color: #fff;
 
-    padding: .5rem;
+    border-radius: 5px;
 
-    border-radius: 3px;
-
-    z-index:100;
-
-    font-family: 'Roboto Mono', monospace;
-
-    
     &.opened {
         display: block;
         opacity: 1;
-        
-        
+        transition: all .2s ease-in-out;
+
     }
 
     header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: .5rem 0;
+        padding: 0 .5rem;
+        background-color: rgba(255,255,255,.05);
 
         .close-modal {
             background: transparent;
@@ -78,6 +61,8 @@ const ModalContainer = styled.div`
 
     main {
         display: flex;
+        padding: .5rem;
+
         div {
             flex: .7;
         }
@@ -94,33 +79,29 @@ const ModalContainer = styled.div`
 
 export default function Modal({ props = {} }) {
     const { img, name, description } = props;
-
     const { isModalOpen, setIsModalOpen } = useContextAPI();
 
-    function closeModal(){
-        setIsModalOpen(false);
-    }
-
     return (
+        <>
+        <Overlay isModalOpen={isModalOpen} />
         <ModalContainer 
-        className={cx(
-            {opened: isModalOpen }
-        )}>
+        isModalOpen={isModalOpen}
+        >
             <header>
                 <h1>{name}</h1>
-                <button className="close-modal" onClick={closeModal}>
+                <button className="close-modal" onClick={() => setIsModalOpen(false)}>
                     <CloseIcon width={30} height={30} />
                 </button>
             </header>
             <main>
                 <aside>
-                    <img src={img} alt="" />
+                    <img src={img} alt={name} />
                 </aside>
                 <div>
                     {description}
                 </div>
             </main>
         </ModalContainer>
-        
+        </>
     )
 }

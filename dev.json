@@ -16,7 +16,7 @@
       "id": "javascript",
       "img": "./assets/icons/techs/javascript.png",
       "name": "JavaScript",
-      "description": "JavaScript é uma linguagem de programação, interpretada e baseada em objetos com funções de primeira classe, mais conhecida como a linguagem de script para páginas Web."
+      "description": "JavaScript é uma linguagem de programação, mais conhecida como a linguagem de script para páginas Web."
     },
     {
       "id": "bootstrap",
@@ -33,6 +33,11 @@
       "img": "./assets/icons/techs/react.png",
       "name": "ReactJS",
       "description": "React é uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web. "
+    },
+    {
+      "img": "./assets/icons/techs/redux.png",
+      "name": "Redux",
+      "description": "Redux é uma biblioteca JavaScript de código aberto para gerenciar o estado do aplicativo. É mais comumente usado com a lib React."
     },
     {
       "img": "./assets/icons/techs/typescript.png",
