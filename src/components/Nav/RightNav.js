@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import cx from 'classnames';
@@ -16,7 +16,7 @@ const Ul = styled.ul`
     text-transform: lowercase;
 
     &.selected {
-        &:after{
+      &:after {
         content: '';
         display: flex;
         width: 100%;
@@ -28,13 +28,8 @@ const Ul = styled.ul`
 
     a {
       text-decoration: none;
-      color: var(--secondary);
+      color: #fff;
       transition: 0.7s ease;
-    }
-
-    a:hover {
-      color: var(--white);
-      font-weight: 700;
     }
 
     @media (max-width: 768px) {
@@ -61,7 +56,7 @@ const Ul = styled.ul`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    background: var(--secondary-dark);
+    background: #000;
     position: fixed;
 
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
@@ -80,33 +75,23 @@ export default function RightNav({ open }) {
 
   useEffect(() => {
     const thisPath = window.location.pathname;
-    setPath(thisPath)
-  },[])
+    setPath(thisPath);
+  }, []);
 
   return (
-    <>
-      <Ul open={open}>
-        <li className={cx(
-          {selected: path === '/'}
-          )}>
-          <Link href="/">Inicio</Link>
-        </li>
-        <li className={cx(
-          {selected: path === '/sobre'}
-          )}>
-          <Link href="./sobre">Sobre mim</Link>
-        </li>
-        <li className={cx(
-          {selected: path === '/portfolio'}
-          )}>
-          <Link href="./portfolio">Portfólio</Link>
-        </li>
-        <li className={cx(
-          {selected: path === '/contato'}
-          )}>
-          <Link href="./contato">Contato</Link>
-        </li>
-      </Ul>
-    </>
+    <Ul open={open}>
+      <li className={cx({ selected: path === '/' })}>
+        <Link href="/">Inicio</Link>
+      </li>
+      <li className={cx({ selected: path === '/about' })}>
+        <Link href="/about">Sobre mim</Link>
+      </li>
+      <li className={cx({ selected: path === '/portfolio' })}>
+        <Link href="/portfolio">Portfólio</Link>
+      </li>
+      <li className={cx({ selected: path === '/contact' })}>
+        <Link href="/contact">Contato</Link>
+      </li>
+    </Ul>
   );
 }

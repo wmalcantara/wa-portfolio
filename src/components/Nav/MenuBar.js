@@ -6,7 +6,7 @@ import RightNav from './RightNav';
 const Nav = styled.nav`
   width: 100%;
   height: 55px;
-  background: var(--secondary-dark);
+  background: #000;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -1,6 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
-import { ContextAPIProvider } from '../src/contexts/ContextAPI';
+import { ContextAPIProvider } from '../contexts/ContextAPI';
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -55,9 +55,9 @@ export default function App({ Component, pageProps }) {
     <>
       <GlobalStyle />
       <ContextAPIProvider>
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </ContextAPIProvider>
     </>
   );

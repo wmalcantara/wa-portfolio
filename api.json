@@ -19,12 +19,6 @@
       "description": "JavaScript é uma linguagem de programação, mais conhecida como a linguagem de script para páginas Web."
     },
     {
-      "id": "bootstrap",
-      "img": "./assets/icons/techs/bootstrap.png",
-      "name": "Bootstrap",
-      "description": "Bootstrap é um framework CSS para desenvolvimento de componentes de interface e front-end para sites e aplicações web."
-    },
-    {
       "img": "./assets/icons/techs/git.png",
       "name": "Git",
       "description": "Git é um sistema de controle de versões distribuído, usado principalmente no desenvolvimento de software."
@@ -45,14 +39,14 @@
       "description": "TypeScript é um superconjunto de JavaScript desenvolvido pela Microsoft que adiciona tipagem e alguns outros recursos a linguagem."
     },
     {
-      "img": "./assets/icons/techs/sass.png",
-      "name": "SASS",
-      "description": "Syntactically Awesome Style Sheets, é uma linguagem de estilo e script que é interpretada ou compilada em CSS."
-    },
-    {
       "img": "./assets/icons/techs/styled-components.png",
       "name": "Styled Components",
       "description": "Styled Components, é uma ferramenta CSS em JS, que preenche a lacuna entre componentes e estilização."
+    },
+    {
+      "img": "./assets/icons/techs/sass.png",
+      "name": "SASS",
+      "description": "Syntactically Awesome Style Sheets, é uma linguagem de estilo e script que é interpretada ou compilada em CSS."
     },
     {
       "img": "./assets/icons/techs/GSAP.png",
@@ -68,11 +62,6 @@
       "img": "./assets/icons/techs/framer-motion.png",
       "name": "Framer Motion",
       "description": "Framer Motion, é uma biblioteca de animação para React."
-    },
-    {
-      "img": "./assets/icons/techs/jquery.png",
-      "name": "jQuery",
-      "description": "jQuery, é uma biblioteca de funções JavaScript desenvolvida para simplificar os scripts."
     }
   ],
 
@@ -86,12 +75,12 @@
       "name": "Figma"
     },
     {
-      "img": "./assets/icons/tools/linux.png",
-      "name": "Linux"
-    },
-    {
       "img": "./assets/icons/tools/photoshop.png",
       "name": "Photoshop"
+    },
+    {
+      "img": "./assets/icons/tools/linux.png",
+      "name": "Linux"
     },
     {
       "img": "./assets/icons/tools/terminal.png",
@@ -104,6 +93,27 @@
     {
       "img": "./assets/icons/tools/yarn.png",
       "name": "Yarn"
+    }
+  ],
+
+  "portfolios": [
+    {
+      "img": "./assets/portfolio/pomoreact.png",
+      "name": "Pomo.react",
+      "description": "Pomo.react é uma aplicação de desenvolvimento próprio, baseado na técnica pomodoro, consiste em ser uma técnica de foco por durante 25 minutos, e 5 minutos de pausa. Construido em react.js.",
+      "link": "https://pomoreact.vercel.app/"
+    },
+    {
+      "img": "./assets/portfolio/links.png",
+      "name": "Links",
+      "description": "Links é somente uma aplicação inspirada na plataforma Linktree permitindo ao usuário agrupar e divulgar todos os links de suas redes sociais. Construido em react.js, next.js e framer motion.",
+      "link": "https://walteralcantara-links.vercel.app/"
+    },
+    {
+      "img": "./assets/portfolio/wmdb.png",
+      "name": "WMDB",
+      "description": "WMDB é um projeto desenvolvido pra ser um banco de filmes e séries, inspirado no TMDB e IMDB. Construido em react, next.js, sass e consumo de APIs, ainda em desenvolvimento.",
+      "link": "https://wmdb.vercel.app"
     }
   ]
 }
