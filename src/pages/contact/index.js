@@ -5,7 +5,7 @@ import SocialNetwork from '../../components/SocialNetwork';
 import MenuBar from '../../components/Nav/MenuBar';
 import Typewriter from '../../components/Typewriter';
 
-import * as S from './styled.js';
+import { Main } from '../../styles/home/styled.js';
 
 const variants = {
   bgPhoto: {
@@ -51,7 +51,7 @@ export default function Contato() {
       <Head title="WA | Contato" />
       <MenuBar />
 
-      <S.Main>
+      <Main>
         <motion.div
           className="bg-photo"
           initial="hidden"
@@ -86,7 +86,7 @@ export default function Contato() {
 
           <SocialNetwork />
         </motion.div>
-      </S.Main>
+      </Main>
     </>
   );
 }

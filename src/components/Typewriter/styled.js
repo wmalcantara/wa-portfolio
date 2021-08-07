@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const TypewriterWrapper = styled.h1`
   color: var(--white);
+  z-index: 1;
 
   //type animation
   &::after {

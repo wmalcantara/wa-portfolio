@@ -6,7 +6,8 @@ import Head from '../../components/Head';
 import SocialNetworkComponent from '../../components/SocialNetwork';
 import Typewriter from '../../components/Typewriter';
 
-import * as S from './styled.js';
+import { Main } from '../../styles/home/styled.js';
+
 
 const variants = {
   bgPhoto: {
@@ -43,7 +44,7 @@ export default function Home() {
     <>
       <Head title="WA | Início" />
 
-      <S.Main>
+      <Main>
         <motion.div
           className="bg-image"
           initial="hidden"
@@ -66,7 +67,7 @@ export default function Home() {
             </div>
           </motion.div>
         </div>
-      </S.Main>
+      </Main>
     </>
   );
 }

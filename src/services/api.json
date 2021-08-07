@@ -114,6 +114,12 @@
       "name": "WMDB",
       "description": "WMDB é um projeto desenvolvido pra ser um banco de filmes e séries, inspirado no TMDB e IMDB. Construido em react, next.js, sass e consumo de APIs, ainda em desenvolvimento.",
       "link": "https://wmdb.vercel.app"
+    },
+    {
+      "img": "./assets/portfolio/healthyfood.png",
+      "name": "Healthy Food",
+      "description": "Healthy Food é um projeto desenvolvido simulando uma landing page. Construido com react, styled components e next.js sendo 100% responsivo.",
+      "link": "https://healthyfood-walter.vercel.app"
     }
   ]
 }

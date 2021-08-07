@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { techs, tools } from '../../../api.json';
+import { techs, tools } from '../../services/api.json';
 
 import { useContextAPI } from '../../hooks/useContextAPI';
 
@@ -13,7 +13,7 @@ import SocialNetwork from '../../components/SocialNetwork';
 import MenuBar from '../../components/Nav/MenuBar';
 import Typewriter from '../../components/Typewriter';
 
-import * as S from './styled.js';
+import { Main } from '../../styles/about/styled.js';
 
 const variants = {
   bgPhoto: {
@@ -129,7 +129,7 @@ export default function Sobre() {
     <>
       <Head title="WA | Sobre" />
       <MenuBar />
-      <S.Main>
+      <Main>
         <motion.div
           className="bg-photo"
           initial="hidden"
@@ -249,7 +249,7 @@ export default function Sobre() {
 
           <Modal props={tech} />
         </div>
-      </S.Main>
+      </Main>
     </>
   );
 }

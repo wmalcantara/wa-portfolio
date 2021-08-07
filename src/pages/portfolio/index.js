@@ -4,11 +4,11 @@ import MenuBar from '../../components/Nav/MenuBar';
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-import { portfolios } from '../../../api.json';
+import { portfolios } from '../../services/api.json';
 
 import Typewriter from '../../components/Typewriter';
 
-import * as S from './styled.js';
+import { Main } from '../../styles/portfolio/styled.js';
 
 const variants = {
   pageDescription: {
@@ -64,7 +64,7 @@ export default function Contato() {
 
       <Head title="WA | Portfólio" />
 
-      <S.Main>
+      <Main>
         <div className="portfolio">
           <Typewriter>portfólio.</Typewriter>
 
@@ -125,7 +125,7 @@ export default function Contato() {
             </section>
           </motion.div>
         </div>
-      </S.Main>
+      </Main>
     </>
   );
 }
