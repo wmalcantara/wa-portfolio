@@ -42,6 +42,20 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font: 400 1rem 'Roboto Mono', monospace;
   }
+
+  /* scroll */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #111;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #5f5f5f;
+    border-radius: 3px;
+  }
 `;
 
 const theme = {
