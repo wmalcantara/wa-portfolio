@@ -10,7 +10,6 @@ import DownloadIcon from '../../../public/assets/icons/download.svg';
 import Head from '../../components/Head';
 import Modal from '../../components/Modal';
 import SocialNetwork from '../../components/SocialNetwork';
-import MenuBar from '../../components/Nav/MenuBar';
 import Typewriter from '../../components/Typewriter';
 
 import { Main } from '../../styles/about/styled.js';
@@ -128,7 +127,7 @@ export default function Sobre() {
   return (
     <>
       <Head title="WA | Sobre" />
-      <MenuBar />
+
       <Main>
         <motion.div
           className="bg-photo"

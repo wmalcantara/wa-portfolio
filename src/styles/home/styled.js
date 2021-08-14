@@ -5,7 +5,7 @@ export const Main = styled.main`
   max-width: 960px;
   margin: 0 auto;
 
-  padding-top: 55px; //altura do menubar
+  /* padding-top: 55px; //altura do menubar */
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -27,7 +27,7 @@ export const Main = styled.main`
   .hello {
     width: 320px;
     padding: 0.875rem;
-    margin-top: 2rem;
+    margin-top: 12rem;
     position: fixed;
     grid-column: 1;
 
@@ -86,8 +86,10 @@ export const Main = styled.main`
     flex-direction: column-reverse;
 
     .hello {
-      position: relative;
-      margin-top: 4rem;
+      position: absolute;
+      margin: unset;
+      bottom: 30px;
+
       width: 100%;
       h1 {
         font-size: 2.5rem;
@@ -98,19 +100,11 @@ export const Main = styled.main`
       }
     }
 
-    .bg-photo {
-      top: auto;
+    .bg-image {
+      top: 0;
 
-      position: relative;
-      height: 250px;
-      width: 100%;
-
-      background-image: radial-gradient(
-          94% 63% at 31% 66%,
-          rgba(0, 0, 0, 0) 53%,
-          #000000 100%
-        ),
-        url(./assets/img/home-background-mobile.png);
     }
+
+
   }
 `;

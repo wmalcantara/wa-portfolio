@@ -2,10 +2,15 @@ import { motion } from 'framer-motion';
 
 import Head from '../../components/Head';
 import SocialNetwork from '../../components/SocialNetwork';
-import MenuBar from '../../components/Nav/MenuBar';
 import Typewriter from '../../components/Typewriter';
 
-import { Main } from '../../styles/home/styled.js';
+import {
+  Main,
+  ContactContent,
+  ContactText
+} from '../../styles/contact/styled.js';
+
+import ContactForm from '../../components/ContactForm';
 
 const variants = {
   bgPhoto: {
@@ -49,43 +54,31 @@ export default function Contato() {
   return (
     <>
       <Head title="WA | Contato" />
-      <MenuBar />
 
       <Main>
-        <motion.div
-          className="bg-photo"
-          initial="hidden"
-          animate="visible"
-          variants={variants.bgPhoto}
-        />
+        <ContactContent>
+          {/* <motion.div
+            className="bg-photo"
+            initial="hidden"
+            animate="visible"
+            variants={variants.bgPhoto}
+          /> */}
 
-        <Typewriter>contato.</Typewriter>
+          <ContactText>
+            <Typewriter>contato.</Typewriter>
+            <p>waltermalcantara@gmail.com</p>
+            <SocialNetwork />
+          </ContactText>
 
-        <motion.div
-          className="contact-me"
-          initial="hidden"
-          animate="visible"
-          variants={variants.contactBox}
-        >
-          <p>
-            Espero que tenha gostado do meu portfolio, se gostou das minhas
-            habilidades você pode entrar em contato comigo, ficarei feliz em
-            respondê-lo.
-          </p>
-
-          <br />
-
-          <a
-            className="email"
-            href="mailto:waltermalcantara@gmail.com"
-            title="Envie-me um email"
-            style={{ color: 'var(--secondary)' }}
-          >
-            waltermalcantara@gmail.com
-          </a>
-
-          <SocialNetwork />
-        </motion.div>
+          {/* <motion.div
+            className="contact-me"
+            initial="hidden"
+            animate="visible"
+            variants={variants.contactBox}
+          > */}
+          <ContactForm />
+          {/* </motion.div> */}
+        </ContactContent>
       </Main>
     </>
   );

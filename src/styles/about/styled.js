@@ -19,6 +19,7 @@ export const Main = styled.main`
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+    z-index: -1;
 
     @media (max-width: 768px) {
       position: relative;
@@ -128,7 +129,7 @@ export const Main = styled.main`
         cursor: pointer;
         padding: 0.25rem;
         border-radius: 3px;
-        background: var(--secondary-dark);
+        background: var(--primary);
         transition: 0.3s ease;
         //animation slide-up
         &:hover {

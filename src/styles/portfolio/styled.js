@@ -13,7 +13,7 @@ export const Main = styled.div`
       margin: 0 auto;
       border-radius: 3px;
       color: var(--white);
-      background: var(--secondary-dark);
+      background: var(--primary);
       display: flex;
       align-items: center;
       padding: 0.875rem;

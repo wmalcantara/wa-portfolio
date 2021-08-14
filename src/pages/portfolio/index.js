@@ -1,5 +1,4 @@
 import Head from '../../components/Head';
-import MenuBar from '../../components/Nav/MenuBar';
 
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -60,7 +59,6 @@ const variants = {
 export default function Contato() {
   return (
     <>
-      <MenuBar />
 
       <Head title="WA | Portfólio" />
 
