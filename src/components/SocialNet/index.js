@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 
-import GithubIcon from '../../public/assets/icons/github.svg';
-import LinkedinIcon from '../../public/assets/icons/linkedin.svg';
+import GithubIcon from '../../assets/icons/github.svg';
+import LinkedinIcon from '../../assets/icons/linkedin.svg';
+
+import { SocialNetworkBox } from './styled';
 
 const variants = {
   onHovering: {
@@ -14,26 +15,7 @@ const variants = {
   },
 };
 
-const SocialNetworkBox = styled.div`
-  display: flex;
-  align-items: center;
-
-  a + a {
-    margin: 0 1rem;
-  }
-
-  svg {
-    height: 40px;
-    transition: 0.7s ease;
-    fill: var(--secondary);
-  }
-
-  svg:hover {
-    fill: var(--white);
-  }
-`;
-
-export default function SocialNetworkComponent() {
+export default function SocialNet() {
   return (
     <SocialNetworkBox className="socialBox">
       <motion.a

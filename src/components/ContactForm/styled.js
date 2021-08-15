@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ContactFormContainer = styled.section`
-  width: 50%;
+  margin: 4rem 0 0 0;
 
   p {
     color: #fff;
@@ -9,15 +9,9 @@ export const ContactFormContainer = styled.section`
   }
 
   @media (max-width: 768px) {
+    margin: unset;
     width: 100%;
   }
-
-  @media (max-width: 425px) {
-    h1 {
-      text-align: left;
-    }
-  }
-
 `;
 
 export const ContactFormContent = styled.div`

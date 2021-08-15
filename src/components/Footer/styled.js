@@ -6,7 +6,7 @@ export const FooterContainer = styled.footer`
   background: #000;
   font-family: inherit;
 
-  position: fixed;
+  position: relative;
   bottom: 0;
   z-index: 100;
 `;

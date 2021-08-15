@@ -2,16 +2,21 @@ import styled from 'styled-components';
 
 export const HeaderContainer = styled.header`
   width: 100%;
-  background: #000;
+  height: 55px;
   position: fixed;
   z-index: 100;
+  top: 0;
+  background: #000;
   transition: border-bottom 0.3s ease;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
-  /* &.scrolling-active {
-    background: #fff;
-    border-bottom: 4px solid #000;
-  } */
+  &.scrolling-active {
+    //..
+  }
+  
+  @media (max-width: 768px) {
+    height: 45px;
+  }
 `;
 
 export const HeaderContent = styled.div`

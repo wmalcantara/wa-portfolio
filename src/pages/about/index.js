@@ -5,14 +5,16 @@ import { techs, tools } from '../../services/api.json';
 
 import { useContextAPI } from '../../hooks/useContextAPI';
 
-import DownloadIcon from '../../../public/assets/icons/download.svg';
-
-import Head from '../../components/Head';
 import Modal from '../../components/Modal';
-import SocialNetwork from '../../components/SocialNetwork';
+import SocialNet from '../../components/SocialNet';
 import Typewriter from '../../components/Typewriter';
 
-import { Main } from '../../styles/about/styled.js';
+import DownloadIcon from '../../assets/icons/downloadIcon.svg';
+
+import {
+  AboutContainer,
+  AboutContent
+} from '../../styles/pages/About';
 
 const variants = {
   bgPhoto: {
@@ -125,12 +127,10 @@ export default function Sobre() {
   }
 
   return (
-    <>
-      <Head title="WA | Sobre" />
-
-      <Main>
+    <AboutContainer>
+      <AboutContent>
         <motion.div
-          className="bg-photo"
+          className="bg"
           initial="hidden"
           animate="visible"
           variants={variants.bgPhoto}
@@ -146,12 +146,11 @@ export default function Sobre() {
             variants={variants.aboutMe}
           >
             <div className="social-box">
-              <SocialNetwork />
+              <SocialNet />
             </div>
 
             <div className="first-folder">
-              <p>Faça o download do meu</p>
-              <button type="button">
+              <p>Faça o download do meu
                 <a
                   href="https://drive.google.com/file/d/18YxTgpMd6QbrMk-CNZBwicaZ1r83uwxa/view"
                   target="_blank"
@@ -159,11 +158,11 @@ export default function Sobre() {
                   currículo
                   <DownloadIcon width={20} />
                 </a>
-              </button>
+              </p>
             </div>
 
             <div className="second-folder">
-              <p style={{ color: 'var(--secondary)' }}>
+              <p>
                 Estudante em Análises e Desenvolvimento de Sistemas pelo
                 Instituto Federal de São Paulo, Campus de Jacareí.
               </p>
@@ -248,7 +247,7 @@ export default function Sobre() {
 
           <Modal props={tech} />
         </div>
-      </Main>
-    </>
+      </AboutContent>
+    </AboutContainer>
   );
 }

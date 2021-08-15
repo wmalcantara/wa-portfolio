@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const Main = styled.main`
-  width: 100%;
+import { Container, Content } from '../styled';
+
+export const ContactContainer = styled(Container)`
   background: #282A2D;
 
   @media (max-width: 768px) {
@@ -9,14 +10,13 @@ export const Main = styled.main`
   }
 `;
 
-export const ContactContent = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 80px 1rem 0;
-
+export const ContactContent = styled(Content)`
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
+  gap: 6rem;
+  max-width: 960px;
+  padding: 0 1rem;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -28,5 +28,4 @@ export const ContactText = styled.div`
   p {
     margin: 1rem 0;
   }
-
 `

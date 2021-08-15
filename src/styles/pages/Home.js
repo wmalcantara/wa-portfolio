@@ -1,37 +1,23 @@
 import styled from 'styled-components';
+import {
+  Container,
+  Content,
+} from '../styled';
 
-export const Main = styled.main`
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
+export const HomeContainer = styled(Container)`
+  //..
+`;
 
-  /* padding-top: 55px; //altura do menubar */
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  .bg-image {
-    height: 450px;
-    width: 100%;
-    max-width: 960px;
-    z-index: -1;
-    position: fixed;
-    grid-column: 2;
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-image: url(./assets/img/home-background.png);
-  }
+export const HomeContent = styled(Content)`
+  display: flex;
+  position: relative;
 
   .hello {
-    width: 320px;
-    padding: 0.875rem;
-    margin-top: 12rem;
-    position: fixed;
-    grid-column: 1;
+    max-width: 350px;
+    margin: 12rem 0 0 0;
+    padding: 0 1rem;
 
-    a[href^='/about'] {
+    a[href='/about'] {
       display: block;
       width: 100%;
 
@@ -75,36 +61,38 @@ export const Main = styled.main`
       }
     }
 
-    .social-box > div {
-      margin: 1rem 0 0 0;
+    .social-box div {
+      margin: 1rem 0 0;
       justify-content: space-evenly;
+    }
+  }
+  
+  .bg {
+    z-index: -1;
+    position: absolute;
+    right: 0;
+
+    img {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      object-fit: cover;
+      height: 100%;
     }
   }
 
   @media (max-width: 768px) {
-    display: flex;
     flex-direction: column-reverse;
+    
+    .bg { position: unset;}
 
     .hello {
-      position: absolute;
       margin: unset;
-      bottom: 30px;
-
+      min-width: unset;
+      max-width: unset;
       width: 100%;
-      h1 {
-        font-size: 2.5rem;
-      }
 
-      a {
-        justify-self: center;
-      }
+      h1 { font-size: 2.5rem; }
     }
-
-    .bg-image {
-      top: 0;
-
-    }
-
-
   }
 `;

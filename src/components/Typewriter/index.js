@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 
-import { typeWriter } from '../../utils/typeWriter';
-import * as S from './styled.js';
+import { TypewriterWrapper } from './styled.js';
 
 export default function Typewriter({ children }) {
   useEffect(() => {
@@ -18,8 +17,8 @@ export default function Typewriter({ children }) {
   }, []);
 
   return (
-    <S.TypewriterWrapper className="typewriter-title">
+    <TypewriterWrapper className="typewriter-title">
       {children}
-    </S.TypewriterWrapper>
+    </TypewriterWrapper>
   );
 }

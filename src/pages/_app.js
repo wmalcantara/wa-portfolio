@@ -3,7 +3,7 @@ import { ContextAPIProvider } from '../contexts/ContextAPI';
 import { GlobalStyle } from '../styles/global.js';
 
 import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Footer from '../components/Footer';
 
 export default function App({ Component, pageProps }) {
   return (
@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
       <ContextAPIProvider>
         <Header />
         <Component {...pageProps} />
-        {/* <Footer /> */}
+
       </ContextAPIProvider>
     </>
   );
